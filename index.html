@@ -19,6 +19,9 @@ a{color:var(--amber);text-decoration:none}
 a:hover{color:var(--amber-deep)}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media (max-width:1180px){#work-grid{grid-template-columns:repeat(2,minmax(min(320px, 100%), 1fr))}}
+@media (max-width:520px){#work-grid{grid-template-columns:1fr}}
 </style>
 </helmet>
 <div ref="{{ rootRef }}" style="background:var(--paper);min-height:100vh;font-family:var(--sans);color:var(--ink)">
@@ -112,8 +115,8 @@ a:hover{color:var(--amber-deep)}
 <h2 class="display-l" style="margin:0">Featured Product Work</h2>
 <p class="body-sm" style="margin:0;max-width:34ch;color:var(--ink-faint)">Written as product decision documents: problem, options, trade-offs, what shipped, what it moved.</p>
 </div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px, 100%), 1fr));gap:18px">
-<sc-for list="{{ studies }}" as="cs" hint-placeholder-count="3">
+<div id="work-grid">
+<sc-for list="{{ studies }}" as="cs" hint-placeholder-count="4">
 <button onClick="{{ cs.onClick }}" class="sd-card" style="text-align:left;cursor:pointer;padding:24px;aspect-ratio:1;display:flex;flex-direction:column;gap:12px;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)" style-hover="transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)">
 <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
 <span class="overline" style="color:var(--ink-ghost)">Case Study {{ cs.num }}</span>
@@ -373,6 +376,9 @@ a:hover{color:var(--amber-deep)}
 </div>
 </sc-for>
 </div>
+<sc-if value="{{ cs.hasMetricsFootnote }}" hint-placeholder-val="{{ false }}">
+<p class="body-sm" style="margin:-24px 0 44px;color:var(--ink-faint);font-style:italic;max-width:64ch">{{ cs.metricsFootnote }}</p>
+</sc-if>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px, 100%), 1fr));gap:56px;align-items:start">
 <article style="display:flex;flex-direction:column;gap:52px;min-width:0">
@@ -400,6 +406,116 @@ a:hover{color:var(--amber-deep)}
 <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">{{ sec.visual }}</span>
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — replace with real chart or screenshot</span>
 </div>
+</sc-if>
+<sc-if value="{{ sec.hasBlocks }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ sec.blocks }}" as="blk" hint-placeholder-count="2">
+
+<sc-if value="{{ blk.type === 'para' }}" hint-placeholder-val="{{ false }}">
+<p class="body-lg" style="margin:0;font-size:17px">{{ blk.text }}</p>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'bigline' }}" hint-placeholder-val="{{ false }}">
+<div style="margin:4px 0">
+<p class="display-m" style="margin:0;text-wrap:pretty">{{ blk.text }}</p>
+<sc-if value="{{ blk.hasSub }}" hint-placeholder-val="{{ false }}"><p class="body-lg" style="margin:10px 0 0">{{ blk.sub }}</p></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'stat' }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="font-family:var(--mono);font-weight:700;font-size:40px;color:var(--ink);line-height:1">{{ blk.value }}</div>
+<div class="body" style="margin-top:8px;color:var(--ink-soft)">{{ blk.caption }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'quote' }}" hint-placeholder-val="{{ false }}">
+<p class="quote" style="font-size:22px;margin:0;padding-left:18px;border-left:2px solid var(--amber)">{{ blk.text }}</p>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'note' }}" hint-placeholder-val="{{ false }}">
+<p class="body-sm" style="margin:0;color:var(--ink-faint);font-style:italic">{{ blk.text }}</p>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'list' }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ blk.mode === 'bullets' }}" hint-placeholder-val="{{ false }}">
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ blk.items }}" as="it" hint-placeholder-count="4">
+<li class="body" style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--mono);font-size:11px;color:var(--amber)">◦</span><span>{{ it }}</span></li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{ blk.mode === 'tags' }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ blk.items }}" as="it" hint-placeholder-count="4"><span class="sd-tag">{{ it }}</span></sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ blk.mode === 'arrows' }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:flex-start">
+<sc-for list="{{ blk.items }}" as="it" hint-placeholder-count="4">
+<div>
+<div class="body" style="font-weight:600;color:var(--ink);padding:6px 0">{{ it.text }}</div>
+<sc-if value="{{ it.showArrow }}" hint-placeholder-val="{{ false }}"><div style="font-family:var(--mono);color:var(--amber-deep);font-size:13px;line-height:1;padding-left:2px">↓</div></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'cards' }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px, 100%), 1fr));gap:16px">
+<sc-for list="{{ blk.items }}" as="card" hint-placeholder-count="2">
+<div class="sd-card" style="padding:24px;display:flex;flex-direction:column;gap:10px;{{ card.highlightStyle }}">
+<sc-if value="{{ card.hasEyebrow }}" hint-placeholder-val="{{ false }}"><span class="overline" style="color:var(--amber-deep)">{{ card.eyebrow }}</span></sc-if>
+<sc-if value="{{ card.hasTitle }}" hint-placeholder-val="{{ false }}"><h3 class="h1" style="margin:0;font-size:24px">{{ card.title }}</h3></sc-if>
+<sc-if value="{{ card.hasBody }}" hint-placeholder-val="{{ false }}"><p class="body" style="margin:0">{{ card.body }}</p></sc-if>
+<sc-if value="{{ card.hasSteps }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;align-items:flex-start;margin-top:2px">
+<sc-for list="{{ card.steps }}" as="st" hint-placeholder-count="4">
+<div>
+<div class="body-sm" style="font-weight:600;color:var(--ink);padding:4px 0">{{ st.text }}</div>
+<sc-if value="{{ st.showArrow }}" hint-placeholder-val="{{ false }}"><div style="font-family:var(--mono);color:var(--amber-deep);font-size:12px;line-height:1">↓</div></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ card.hasStat }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:4px;padding-top:14px;border-top:1px solid var(--line)">
+<div style="font-family:var(--mono);font-weight:700;font-size:20px;color:var(--ink)">{{ card.stat }}</div>
+</div>
+</sc-if>
+<sc-if value="{{ card.hasBulletsLabel }}" hint-placeholder-val="{{ false }}"><span class="overline" style="margin-top:4px">{{ card.bulletsLabel }}</span></sc-if>
+<sc-if value="{{ card.hasBullets }}" hint-placeholder-val="{{ false }}">
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ card.bullets }}" as="bl" hint-placeholder-count="3">
+<li class="body-sm" style="display:flex;gap:8px;align-items:baseline"><span style="font-family:var(--mono);font-size:10px;color:var(--amber)">◦</span><span>{{ bl }}</span></li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{ card.hasCta }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber-deep);margin-top:4px">{{ card.cta }}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ blk.type === 'flow' }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px, 100%), 1fr));gap:14px">
+<sc-for list="{{ blk.items }}" as="st" hint-placeholder-count="5">
+<div class="sd-card" style="padding:16px;display:flex;flex-direction:column;gap:6px;background:var(--paper-raised)">
+<sc-if value="{{ st.hasNum }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--mono);font-weight:700;font-size:13px;color:var(--amber-deep)">{{ st.num }}</span></sc-if>
+<span class="h4" style="margin:0">{{ st.title }}</span>
+<sc-if value="{{ st.hasBody }}" hint-placeholder-val="{{ false }}"><span class="body-sm" style="color:var(--ink-soft)">{{ st.body }}</span></sc-if>
+<sc-if value="{{ st.showArrow }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--mono);color:var(--amber-deep);font-size:14px">→</span></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ blk.hasLoopNote }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:6px;font-family:var(--mono);font-size:12px;color:var(--amber-deep);display:flex;align-items:center;gap:8px">
+<span>↺</span><span>{{ blk.loopNote }}</span>
+</div>
+</sc-if>
+</sc-if>
+
+</sc-for>
 </sc-if>
 </div>
 </section>
@@ -566,6 +682,191 @@ class Component extends DCLogic {
         ]
       },
       {
+        num: '04', slug: 'paid-collab', title: 'Paid Collab', years: '2025–26', kind: 'product',
+        subtitle: 'Turning brand campaigns into a quality creator acquisition engine',
+        highlight: 'CAC ↓', highlightLabel: 'Campaign-led creator acquisition',
+        cardHighlightLabel: 'Acquiring campaign-ready creators beyond paid ads',
+        meta: 'LEHLAH · 2025–PRESENT', tags: ['Creator Acquisition', 'Growth', '0→1', 'Influencer Marketing'],
+        facts: [{ k: 'Role', v: 'PM — problem discovery to launch' }, { k: 'Team', v: 'Product · Engineering · Influencer Marketing · Ops' }, { k: 'Surface', v: 'Creator App · LehLah SaaS' }, { k: 'Status', v: 'Live · Iterating' }],
+        metrics: [{ v: '₹300', l: 'Approx. CAC to acquire one quality creator through paid acquisition' }, { v: '100K+', l: 'Creator profiles available for targeted outreach' }, { v: '~₹1', l: 'Approx. messaging infrastructure cost per profile contacted' }],
+        metricsFootnote: 'Messaging cost is not the same as realised CAC. Final qualified-creator CAC depends on conversion.',
+        sections: [
+          {
+            n: 'A', title: 'Problem', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'We had creators. But not enough of the right creators.' },
+              { type: 'para', text: 'LehLah operates both as an affiliate platform and an influencer marketing business, with influencer marketing contributing approximately 80% of revenue.' },
+              { type: 'para', text: 'Our creator onboarding flow was straightforward: Mobile Signup → Social Connect → Eligibility Check → App Access.' },
+              { type: 'para', text: 'A creator could access the app if they had 1K+ Instagram followers or 500+ YouTube subscribers.' },
+              { type: 'para', text: 'The problem was that follower count told us whether someone met an eligibility threshold. It did not tell us whether they were a campaign-worthy creator.' },
+              { type: 'para', text: 'Someone could have 1,000 followers and still have:' },
+              { type: 'list', mode: 'bullets', items: ['Poor or inconsistent content', 'Very low posting frequency', 'Purchased followers', 'A public account without real creator activity', "Content that wasn't suitable for brand collaborations"] },
+              { type: 'para', text: "For our affiliate business, this wasn't necessarily a major problem. For influencer marketing, it was." },
+              { type: 'cards', items: [
+                { title: 'What onboarding measured', bullets: ['Followers', '1K+ Instagram', '500+ YouTube'] },
+                { title: 'What campaigns actually required', bullets: ['Content quality', 'Brand fit', 'Category', 'Location', 'Engagement', 'Posting consistency'] }
+              ] },
+              { type: 'bigline', text: 'Eligibility ≠ Creator Quality' }
+            ]
+          },
+          {
+            n: 'B', title: 'Why this mattered', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'Our biggest revenue stream depended on better creator supply.' },
+              { type: 'para', text: 'When a brand gave LehLah a campaign, our Influencer Marketing team needed to find creators matching very specific requirements — for example:' },
+              { type: 'list', mode: 'tags', items: ['BEAUTY', 'FEMALE', 'MUMBAI', '10K–100K FOLLOWERS', 'AESTHETIC CONTENT', 'BRAND FIT'] },
+              { type: 'para', text: "But the creators we needed weren't always available within our active LehLah user base. That meant the team repeatedly had to source creators externally, including through agencies." },
+              { type: 'cards', items: [
+                { title: 'Repeated sourcing', body: 'Each campaign could trigger another cycle of: Find → Contact → Negotiate → Coordinate. This increased operational effort and campaign fulfilment time.' },
+                { title: 'No long-term creator relationship', body: "Creators sourced through another agency might participate in one campaign without ever becoming LehLah users. We solved the current campaign, but didn't necessarily improve our creator supply for the next one." }
+              ] },
+              { type: 'quote', text: 'We were repeatedly renting creator supply instead of building it.' }
+            ]
+          },
+          {
+            n: 'C', title: 'Existing alternative', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'Paid acquisition solved volume. Not quality.' },
+              { type: 'para', text: 'One option was simply to acquire more creators through Instagram ads.' },
+              { type: 'para', text: "But a signup wasn't what we needed. We needed a quality creator who could actually participate in an influencer campaign." },
+              { type: 'para', text: 'It was costing us approximately:' },
+              { type: 'stat', value: '₹300', caption: 'to acquire one quality creator through paid acquisition.' },
+              { type: 'para', text: 'Scaling this approach meant repeatedly paying to acquire creators first and evaluating their quality afterwards.' },
+              { type: 'quote', text: 'Could we identify quality creators first and then give them a reason to join LehLah?' }
+            ]
+          },
+          {
+            n: 'D', title: 'Insight', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'What if the campaign itself became the acquisition channel?' },
+              { type: 'para', text: 'LehLah already had two assets we could connect.' },
+              { type: 'cards', items: [
+                { eyebrow: 'DEMAND', title: 'Paid brand campaigns', body: 'As an Influencer Marketing agency, LehLah already executed a steady stream of brand campaigns every month.' },
+                { eyebrow: 'SUPPLY', title: '100K+ creator profiles', body: "We already had access to a large creator database containing creator contact details sourced through existing contacts, public sources and APIs. The creators weren't necessarily LehLah users yet, but we knew enough about them to identify which creators matched a particular brand brief." }
+              ] },
+              { type: 'cards', items: [
+                { title: 'Traditional Acquisition', steps: ['Ad', 'Acquire creator', 'Connect social account', 'Evaluate quality', 'Check if useful for campaigns'] },
+                { title: 'Campaign-Led Acquisition', steps: ['Campaign requirement', 'Identify relevant creators', 'Offer paid opportunity', 'Creator joins LehLah'], highlight: true }
+              ] },
+              { type: 'bigline', text: 'Filter for quality → Offer value → Acquire' },
+              { type: 'para', text: 'Instead of acquiring creators and then discovering whether they were useful, we could identify the creators we already wanted and use a relevant paid opportunity to bring them onto LehLah.' }
+            ]
+          },
+          {
+            n: 'E', title: 'Solution', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'Paid Collab', sub: 'Turning campaign demand into an acquisition engine.' },
+              { type: 'para', text: 'Whenever a new influencer marketing campaign was created on LehLah SaaS, we could identify creators from our larger creator pool who matched the brand brief.' },
+              { type: 'para', text: 'For example:' },
+              { type: 'list', mode: 'tags', items: ['Beauty', 'Female', 'Mumbai', '10K–100K Followers', 'Relevant Content'] },
+              { type: 'para', text: 'Those creators then received personalised communication informing them that a paid collaboration opportunity was available for them.' },
+              { type: 'flow', items: [
+                { num: '01', title: 'Campaign Created', body: 'The brand brief defines the creator requirement.' },
+                { num: '02', title: 'Relevant Creators Identified', body: 'Creators are filtered from the larger creator pool.' },
+                { num: '03', title: 'Opportunity Sent', body: 'Creator receives WhatsApp + Email communication.' },
+                { num: '04', title: 'Creator Shows Interest', body: 'CTA takes the creator to LehLah.' },
+                { num: '05', title: 'Signup', body: 'Phone number and email are verified.' },
+                { num: '06', title: 'Social Connect', body: 'Instagram / YouTube account is connected.' },
+                { num: '07', title: 'Campaign Application', body: 'Creator can now apply for the collaboration.' }
+              ] }
+            ]
+          },
+          {
+            n: 'F', title: 'Acquisition hook', paras: [],
+            blocks: [
+              { type: 'bigline', text: "We weren't asking creators to download another app." },
+              { type: 'para', text: 'A generic message saying "Download LehLah" gave creators very little reason to act.' },
+              { type: 'para', text: 'Instead, the communication was centred around immediate value:' },
+              { type: 'quote', text: 'We have a paid collaboration opportunity for you.' },
+              { type: 'para', text: "That changed the creator's motivation. The app download became a step towards accessing something they already wanted rather than the end goal itself." },
+              { type: 'cards', items: [
+                { eyebrow: 'WhatsApp', title: 'Paid Collaboration Opportunity', body: 'We have a brand opportunity that matches your creator profile.', cta: 'View Opportunity →' },
+                { eyebrow: 'Email', title: 'A paid opportunity is waiting for you', body: 'View campaign details and express your interest through LehLah.', cta: 'View Opportunity →' }
+              ] },
+              { type: 'list', mode: 'arrows', items: ['Initial Outreach', 'Email Follow-up', 'WhatsApp Reminder', 'Campaign Reminder'] },
+              { type: 'note', text: 'Email communication was powered through Brevo, while WhatsApp communication used Gupshup. The important story is the acquisition journey, not the integration.' }
+            ]
+          },
+          {
+            n: 'G', title: 'Economics', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'Filter first. Acquire second.' },
+              { type: 'cards', items: [
+                { title: 'Paid Acquisition', steps: ['Pay for traffic', 'Creator signs up', 'Social Connect', 'Evaluate creator', 'Discover whether they meet campaign quality'], stat: '~₹300 / quality creator' },
+                { title: 'Paid Collab', steps: ['Campaign defines required quality', 'Relevant creators identified', 'Paid opportunity sent', 'Interested creator joins LehLah', 'Creator becomes reusable first-party supply'], stat: '~₹1 messaging infrastructure cost/profile contacted', highlight: true }
+              ] },
+              { type: 'note', text: '₹1 represents approximate communication infrastructure cost, not final qualified-creator CAC.' }
+            ]
+          },
+          {
+            n: 'H', title: 'Flywheel', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'One campaign could now create supply for the next one.' },
+              { type: 'flow', loopNote: 'Back to: More Brand Campaigns', items: [
+                { title: 'More Brand Campaigns' },
+                { title: 'More Relevant Creators Reached' },
+                { title: 'More Quality Creators Join LehLah' },
+                { title: 'Larger First-Party Creator Pool' },
+                { title: 'Faster Campaign Fulfilment' },
+                { title: 'Better Brand Experience' }
+              ] },
+              { type: 'cards', items: [
+                { eyebrow: 'Previously, a campaign primarily generated', title: 'Revenue today' },
+                { eyebrow: 'Paid Collab allowed campaigns to potentially generate', title: 'Revenue today + Creator supply for tomorrow', highlight: true }
+              ] }
+            ]
+          },
+          {
+            n: 'I', title: 'Impact', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'The impact went beyond acquisition cost.' },
+              { type: 'cards', items: [
+                { title: '↓ Dependence on Paid Acquisition', body: 'We could use existing campaign demand to acquire relevant creators instead of relying only on Instagram ads.' },
+                { title: '↑ Quality Creator Applications', body: 'Creators were targeted based on actual campaign requirements before they entered the acquisition funnel.' },
+                { title: '↓ Operational Sourcing', body: "Every successfully onboarded creator became part of LehLah's own creator ecosystem and could be approached for future campaigns." },
+                { title: '↓ Campaign Fulfilment Time', body: 'A larger first-party pool of campaign-ready creators reduced the need to repeatedly source creators externally.' }
+              ] },
+              { type: 'list', mode: 'tags', items: ['[ADD QUALIFIED CAC]', '[ADD SIGNUPS]', '[ADD APPLICATION UPLIFT]', '[ADD FULFILMENT TIME IMPROVEMENT]'] }
+            ]
+          },
+          {
+            n: 'J', title: 'What I owned', paras: [],
+            blocks: [
+              { type: 'cards', items: [
+                { title: 'Problem Definition', body: 'Connected the quality problem in creator acquisition with the sourcing bottleneck faced by the Influencer Marketing team.' },
+                { title: 'Product Strategy', body: 'Defined campaign-led acquisition as an alternative to acquiring creators blindly through paid channels.' },
+                { title: 'Creator Journey', body: 'Designed: Outreach → Interest → Download → Signup → Social Connect → Application.' },
+                { title: 'Communication Strategy', body: 'Defined WhatsApp, Email and follow-up journeys to improve conversion.' },
+                { title: 'Cross-functional Execution', body: 'Worked across Product, Engineering, Influencer Marketing and Operations.' },
+                { title: 'Measurement', body: 'Defined acquisition, campaign fulfilment and long-term creator supply metrics.' }
+              ] }
+            ]
+          },
+          {
+            n: 'K', title: 'Success metrics', paras: [],
+            blocks: [
+              { type: 'bigline', text: "Success wasn't app downloads." },
+              { type: 'cards', items: [
+                { title: 'Acquisition', steps: ['Outreach', 'Open', 'Click', 'Download', 'Signup', 'Social Connect'], bulletsLabel: 'Measure', bullets: ['Outreach cost', 'Signup conversion', 'Social Connect conversion', 'Qualified creator CAC', 'CAC vs paid acquisition'] },
+                { title: 'Campaign', steps: ['Qualified Creator', 'Application', 'Selection', 'Submission'], bulletsLabel: 'Measure', bullets: ['Applications per campaign', 'Qualified application rate', 'Acceptance rate', 'Submission rate', 'Campaign fulfilment time'] },
+                { title: 'Long-term Supply', steps: ['Acquired Creator', 'Future Campaign', 'Repeat Participation'], bulletsLabel: 'Measure', bullets: ['30 / 60 / 90-day activity', 'Repeat campaign participation', 'Future campaign response rate', 'Revenue per acquired creator'] }
+              ] },
+              { type: 'bigline', text: "The goal wasn't more downloads.", sub: 'It was a reusable pool of high-quality creators.' }
+            ]
+          },
+          {
+            n: 'L', title: 'Key learning', paras: [],
+            blocks: [
+              { type: 'bigline', text: 'What this changed about how I think about acquisition' },
+              { type: 'para', text: "The cheapest acquisition channel isn't always another ad platform." },
+              { type: 'para', text: 'Sometimes the product already contains the acquisition mechanism.' },
+              { type: 'para', text: 'Creators wanted access to paid brand opportunities. LehLah wanted access to high-quality creators. Paid Collab connected those incentives.' },
+              { type: 'para', text: "Instead of paying to convince creators to download another app, we gave the right creators a reason to come to us." }
+            ]
+          }
+        ]
+      },
+      {
         num: '01', slug: 'engineering', title: 'Retail Platform Systems', years: '2022–24', kind: 'eng',
         subtitle: 'Building systems inside a large retail technology ecosystem',
         highlight: '2 years', highlightLabel: 'Shipping engineering at enterprise scale',
@@ -609,6 +910,39 @@ class Component extends DCLogic {
     ];
   }
 
+  hydrateBlocks(blocks) {
+    return (blocks || []).map(raw => {
+      const b = Object.assign({}, raw);
+      const withArrows = arr => (arr || []).map((t, i, a) => ({ text: t, showArrow: i < a.length - 1 }));
+      if (b.type === 'bigline') {
+        b.hasSub = !!b.sub;
+      } else if (b.type === 'list') {
+        b.items = b.mode === 'arrows' ? withArrows(b.items) : (b.items || []);
+      } else if (b.type === 'cards') {
+        b.items = (b.items || []).map(it => Object.assign({}, it, {
+          hasEyebrow: !!it.eyebrow,
+          hasTitle: !!it.title,
+          hasBody: !!it.body,
+          hasSteps: !!(it.steps && it.steps.length),
+          steps: withArrows(it.steps),
+          hasStat: !!it.stat,
+          hasBulletsLabel: !!it.bulletsLabel,
+          hasBullets: !!(it.bullets && it.bullets.length),
+          bullets: it.bullets || [],
+          hasCta: !!it.cta,
+          highlightStyle: it.highlight ? 'background:var(--amber-wash);border-color:var(--amber-soft);' : ''
+        }));
+      } else if (b.type === 'flow') {
+        const items = b.items || [];
+        b.items = items.map((it, i) => Object.assign({}, it, {
+          hasNum: !!it.num, hasBody: !!it.body, showArrow: i < items.length - 1
+        }));
+        b.hasLoopNote = !!b.loopNote;
+      }
+      return b;
+    });
+  }
+
   notesData() {
     return [
       { title: 'What two years of engineering changed about the way I write PRDs', category: 'Craft', date: 'Jul 2026', readingTime: '7 min read', blurb: 'Writing specs for people whose job I used to do changed what I put in them — and what I leave out.' },
@@ -636,16 +970,20 @@ class Component extends DCLogic {
   renderVals() {
     const st = this.state;
     const all = this.studyData().map(s => Object.assign({}, s, { onClick: () => this.go('case', { slug: s.slug }) }));
-    const studies = all.filter(s => s.kind === 'product');
-    const engStudies = all.filter(s => s.kind === 'eng');
+    const cardLabel = s => Object.assign({}, s, { highlightLabel: s.cardHighlightLabel || s.highlightLabel });
+    const studies = all.filter(s => s.kind === 'product').map(cardLabel);
+    const engStudies = all.filter(s => s.kind === 'eng').map(cardLabel);
     const cur = all.find(s => s.slug === st.slug) || all[0];
     const idx = all.indexOf(cur);
     const next = all[(idx + 1) % all.length];
     const cs = Object.assign({}, cur, {
+      hasMetricsFootnote: !!cur.metricsFootnote,
       sections: cur.sections.map(sec => Object.assign({}, sec, {
         id: 'sec-' + sec.n, href: '#sec-' + sec.n,
         hasBullets: !!(sec.bullets && sec.bullets.length),
-        hasVisual: !!sec.visual, bullets: sec.bullets || []
+        hasVisual: !!sec.visual, bullets: sec.bullets || [],
+        hasBlocks: !!(sec.blocks && sec.blocks.length),
+        blocks: this.hydrateBlocks(sec.blocks)
       }))
     });
 
