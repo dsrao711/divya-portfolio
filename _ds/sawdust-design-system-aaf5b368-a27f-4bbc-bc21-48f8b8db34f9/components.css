@@ -1,0 +1,121 @@
+/* ============================================================
+   SAWDUST — Component primitives
+   Cosmetic, reusable building blocks. Pairs with
+   colors_and_type.css. Used by preview cards + UI kits.
+   ============================================================ */
+
+/* ---------- BUTTONS ---------- */
+.sd-btn{
+  font-family:var(--sans); font-weight:600; font-size:14px; line-height:1;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:11px 18px; border-radius:var(--r-sm); border:1px solid transparent;
+  cursor:pointer; transition:transform var(--dur-fast) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), color var(--dur) var(--ease);
+  white-space:nowrap; user-select:none; text-decoration:none;
+}
+.sd-btn:active{ transform:scale(.975); }
+
+.sd-btn--primary{ background:var(--amber); color:#fff; box-shadow:var(--shadow-sm); }
+.sd-btn--primary:hover{ background:var(--amber-deep); }
+
+.sd-btn--watch{ background:var(--oxblood); color:#fff; box-shadow:var(--shadow-sm); }
+.sd-btn--watch:hover{ background:var(--oxblood-deep); }
+
+.sd-btn--secondary{ background:var(--paper-pure); color:var(--ink); border-color:var(--line-strong); }
+.sd-btn--secondary:hover{ background:var(--paper-raised); border-color:var(--ink-ghost); }
+
+.sd-btn--ghost{ background:transparent; color:var(--ink-soft); }
+.sd-btn--ghost:hover{ background:var(--amber-wash); color:var(--ink); }
+
+.sd-btn--sm{ padding:7px 12px; font-size:12.5px; }
+.sd-btn--lg{ padding:14px 24px; font-size:16px; }
+.sd-btn[disabled]{ opacity:.45; pointer-events:none; }
+
+/* ---------- CHIPS / TAGS / BADGES ---------- */
+.sd-chip{
+  font-family:var(--sans); font-weight:600; font-size:12.5px;
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:var(--r-pill);
+  background:var(--paper-pure); color:var(--ink-soft);
+  border:1px solid var(--line-strong); cursor:pointer;
+  transition:all var(--dur) var(--ease);
+}
+.sd-chip:hover{ border-color:var(--ink-ghost); }
+.sd-chip--active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+.sd-tag{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase;
+  padding:4px 8px; border-radius:var(--r-xs);
+  background:var(--amber-soft); color:var(--amber-deep);
+}
+.sd-tag--ox{ background:var(--oxblood-soft); color:var(--oxblood-deep); }
+.sd-tag--watched{ background:var(--watched-soft); color:var(--watched); }
+
+.sd-badge{ /* small count dot */
+  font-family:var(--mono); font-size:10px; font-weight:700;
+  min-width:18px; height:18px; padding:0 5px; border-radius:var(--r-pill);
+  background:var(--amber); color:#fff; display:inline-flex; align-items:center; justify-content:center;
+}
+
+/* ---------- STAR RATING ---------- */
+.sd-stars{ display:inline-flex; align-items:center; gap:2px; color:var(--gold); font-size:18px; line-height:1; }
+.sd-stars .empty{ color:var(--line-strong); }
+.sd-stars--sm{ font-size:13px; }
+.sd-stars--lg{ font-size:26px; }
+.sd-rating-num{ font-family:var(--mono); font-weight:700; color:var(--ink); }
+
+/* ---------- CARD ---------- */
+.sd-card{
+  background:var(--paper-raised); border:1px solid var(--line);
+  border-radius:var(--r-md); box-shadow:var(--shadow-sm);
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.sd-card--hover:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+
+/* ---------- POSTER ---------- */
+.sd-poster{
+  border-radius:var(--r-poster); box-shadow:var(--shadow-poster);
+  background:var(--paper-sunk); object-fit:cover; display:block;
+  transition:transform var(--dur) var(--ease);
+}
+.sd-poster--hover:hover{ transform:scale(1.03); }
+
+/* ---------- INPUT ---------- */
+.sd-input{
+  font-family:var(--sans); font-size:14px; color:var(--ink);
+  background:var(--paper-pure); border:1px solid var(--line-strong);
+  border-radius:var(--r-sm); padding:11px 14px; width:100%; box-sizing:border-box;
+  transition:border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.sd-input::placeholder{ color:var(--ink-ghost); }
+.sd-input:focus{ outline:none; border-color:var(--amber); box-shadow:0 0 0 3px var(--amber-wash); }
+
+/* ---------- AVATAR ---------- */
+.sd-avatar{
+  width:32px; height:32px; border-radius:var(--r-pill);
+  background:var(--oxblood); color:#fff; font-family:var(--sans); font-weight:700; font-size:13px;
+  display:inline-flex; align-items:center; justify-content:center; flex:none;
+  border:2px solid var(--paper-raised);
+}
+
+/* ---------- POSTER PLACEHOLDER ----------
+   Branded minimalist "poster" used where real artwork isn't
+   available. A color field + serif title + mono year. Set the
+   field color via --pp inline. */
+.sd-pp{
+  position:relative; border-radius:var(--r-poster); box-shadow:var(--shadow-poster);
+  background:var(--pp, var(--ink)); overflow:hidden; aspect-ratio:2/3; display:flex;
+  flex-direction:column; justify-content:flex-end; padding:11% 9%;
+  color:var(--pp-ink, #F3E8D6);
+}
+.sd-pp::before{ /* subtle top vignette + grain */
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.18));
+  pointer-events:none;
+}
+.sd-pp .pp-title{ font-family:var(--serif-display); font-weight:400; font-size:clamp(15px,2.6vw,30px); line-height:.98; letter-spacing:-.01em; position:relative; }
+.sd-pp .pp-meta{ font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; opacity:.72; margin-top:6%; position:relative; }
+.sd-pp .pp-rule{ width:26%; height:2px; background:currentColor; opacity:.6; margin-bottom:7%; position:relative; }
+.sd-pp__img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:inherit; z-index:2; }
+
+/* ---------- DIVIDER ---------- */
+.sd-rule{ height:1px; background:var(--line); border:0; margin:0; }

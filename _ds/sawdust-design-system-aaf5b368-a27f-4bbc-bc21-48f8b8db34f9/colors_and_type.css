@@ -1,0 +1,179 @@
+/* ============================================================
+   SAWDUST — Foundations: Color & Type
+   "The bits of every film that stick to you."
+   ------------------------------------------------------------
+   Aesthetic: warm analog cinema. Cream paper, warm ink,
+   burnt-amber accent (the sawdust), editorial serif + clean
+   grotesque + retro mono for ticket-stub metadata.
+
+   Fonts are loaded from Google Fonts (see @import below).
+   If you need offline/self-hosted copies, drop them in fonts/
+   and swap the @import for @font-face. Flagged to the user.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* ---------- FONT FAMILIES ---------- */
+  --serif-display: 'Instrument Serif', 'Times New Roman', serif; /* wordmark, headlines, big quotes */
+  --sans: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; /* UI + body */
+  --mono: 'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace; /* metadata, ratings, labels */
+
+  /* ---------- CORE PALETTE (warm "paper" theme) ---------- */
+  /* Surfaces */
+  --paper:        #F5EFE3; /* app background — warm cream */
+  --paper-sunk:   #EFE7D6; /* recessed wells, tracks */
+  --paper-raised: #FCF8EF; /* cards, sheets, raised surfaces */
+  --paper-pure:   #FFFDF8; /* highest surface / inputs */
+
+  /* Ink (warm near-blacks → grays) */
+  --ink:        #1B1712; /* primary text, headlines */
+  --ink-soft:   #4B4137; /* secondary text */
+  --ink-faint:  #8A7E6F; /* tertiary text, captions, meta */
+  --ink-ghost:  #B6AB99; /* disabled, placeholder */
+
+  /* Lines / borders (warm) */
+  --line:       #E4D9C6; /* hairline dividers, card borders */
+  --line-strong:#D2C4AC; /* stronger separators, input borders */
+
+  /* ---------- BRAND ACCENTS ---------- */
+  --amber:       #C25E2A; /* the "sawdust" — primary accent / actions */
+  --amber-deep:  #9E4A1E; /* hover / press */
+  --amber-soft:  #EFD9C4; /* amber tint surface (badges, hovers) */
+  --amber-wash:  #F6E7D6; /* faintest amber wash */
+
+  --oxblood:      #6E2433; /* deep red — love/emphasis, "watch together" */
+  --oxblood-deep: #531825;
+  --oxblood-soft: #E7CFCF;
+
+  --gold:        #D69A3C; /* star ratings */
+  --gold-deep:   #B97E26;
+
+  /* ---------- SEMANTIC (warm-tuned) ---------- */
+  --watched:     #5C7150; /* sage green — watched / positive */
+  --watched-soft:#DCE3CF;
+  --warn:        #C28A2A; /* warning / pending */
+  --warn-soft:   #F0E2C3;
+  --danger:      #A8392B; /* destructive */
+  --danger-soft: #EFD2CC;
+
+  /* ---------- ELEVATION / SHADOW (warm-tinted, soft) ---------- */
+  --shadow-sm: 0 1px 2px rgba(43, 30, 18, 0.06), 0 1px 1px rgba(43, 30, 18, 0.04);
+  --shadow-md: 0 2px 6px rgba(43, 30, 18, 0.08), 0 6px 16px rgba(43, 30, 18, 0.07);
+  --shadow-lg: 0 8px 24px rgba(43, 30, 18, 0.12), 0 18px 48px rgba(43, 30, 18, 0.10);
+  --shadow-poster: 0 2px 4px rgba(27,23,18,0.18), 0 10px 26px rgba(27,23,18,0.22); /* posters sit proud */
+  --shadow-inset: inset 0 1px 2px rgba(27,23,18,0.10);
+
+  /* ---------- RADII ---------- */
+  --r-xs: 4px;
+  --r-sm: 7px;
+  --r-md: 11px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --r-pill: 999px;
+  --r-poster: 4px; /* posters use a tight, print-like radius */
+
+  /* ---------- SPACING (4px base) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* ---------- LAYOUT ---------- */
+  --maxw: 1200px;
+  --gutter: 24px;
+
+  /* ---------- MOTION ---------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);     /* gentle ease-out */
+  --ease-soft: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 420ms;
+
+  /* ---------- PAPER GRAIN ---------- */
+  /* subtle tactile noise — apply as background-image overlay */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   DARK "CINEMA" THEME
+   For the lights-down "watch together" mode and as a tweakable
+   alternate direction. Apply via [data-theme="dark"].
+   ============================================================ */
+[data-theme="dark"] {
+  --paper:        #15120E;
+  --paper-sunk:   #100E0A;
+  --paper-raised: #211C16;
+  --paper-pure:   #2A241C;
+
+  --ink:        #F3ECDD;
+  --ink-soft:   #C7BBA7;
+  --ink-faint:  #8E8273;
+  --ink-ghost:  #5C5346;
+
+  --line:       #312A21;
+  --line-strong:#42392D;
+
+  --amber:       #E0762F;
+  --amber-deep:  #C25E2A;
+  --amber-soft:  #3A2A1C;
+  --amber-wash:  #271E15;
+
+  --oxblood:      #C75265;
+  --oxblood-deep: #A33A4C;
+  --oxblood-soft: #34222A;
+
+  --gold:        #E4B25A;
+  --gold-deep:   #C9933A;
+
+  --watched:     #8AA177;
+  --watched-soft:#26301E;
+  --warn:        #D9A748;
+  --warn-soft:   #312712;
+  --danger:      #D6604F;
+  --danger-soft: #341C18;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 2px 6px rgba(0,0,0,0.45), 0 6px 16px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.55), 0 18px 48px rgba(0,0,0,0.5);
+  --shadow-poster: 0 2px 6px rgba(0,0,0,0.5), 0 12px 30px rgba(0,0,0,0.55);
+}
+
+/* ============================================================
+   TYPE SCALE — semantic element styles
+   Display = Instrument Serif. UI/body = Hanken Grotesk.
+   Meta/labels/ratings = Space Mono.
+   ============================================================ */
+
+/* Display / editorial headlines (serif) */
+.display-xl { font-family: var(--serif-display); font-weight: 400; font-size: clamp(48px, 7vw, 92px); line-height: 0.98; letter-spacing: -0.01em; color: var(--ink); }
+.display-l  { font-family: var(--serif-display); font-weight: 400; font-size: clamp(38px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.01em; color: var(--ink); }
+.display-m  { font-family: var(--serif-display); font-weight: 400; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.06; color: var(--ink); }
+
+/* Headings (sans, the workhorse) */
+.h1 { font-family: var(--sans); font-weight: 700; font-size: 32px; line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); }
+.h2 { font-family: var(--sans); font-weight: 700; font-size: 24px; line-height: 1.18; letter-spacing: -0.015em; color: var(--ink); }
+.h3 { font-family: var(--sans); font-weight: 600; font-size: 19px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+.h4 { font-family: var(--sans); font-weight: 600; font-size: 16px; line-height: 1.3; color: var(--ink); }
+
+/* Body */
+.body-lg { font-family: var(--sans); font-weight: 400; font-size: 18px; line-height: 1.6; color: var(--ink-soft); }
+.body    { font-family: var(--sans); font-weight: 400; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.body-sm { font-family: var(--sans); font-weight: 400; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+
+/* Meta / labels / overlines (mono — the ticket-stub voice) */
+.meta      { font-family: var(--mono); font-weight: 400; font-size: 12.5px; line-height: 1.4; color: var(--ink-faint); letter-spacing: 0.01em; }
+.overline  { font-family: var(--mono); font-weight: 700; font-size: 11px; line-height: 1; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+.label     { font-family: var(--sans); font-weight: 600; font-size: 13px; line-height: 1.2; letter-spacing: 0.01em; color: var(--ink); }
+
+/* Quote / review pull (serif italic) */
+.quote { font-family: var(--serif-display); font-style: italic; font-weight: 400; font-size: clamp(24px, 3vw, 38px); line-height: 1.25; color: var(--ink); }
+
+/* Brand wordmark */
+.wordmark { font-family: var(--serif-display); font-weight: 400; font-size: 28px; letter-spacing: -0.01em; color: var(--ink); }
+.wordmark .dot { color: var(--amber); }
