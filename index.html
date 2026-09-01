@@ -461,9 +461,9 @@ a:hover{color:var(--amber-deep)}
 <sc-if value="{{ sec.hasRetailers }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:10px">
 <sc-for list="{{ sec.retailers }}" as="r" hint-placeholder-count="8">
-<div style="height:44px;padding:0 16px;border-radius:var(--r-sm);background:var(--paper-raised);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;min-width:72px">
-<img src="{{ r.logo }}" alt="{{ r.name }}" style="height:20px;max-width:88px;width:auto;display:block;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
-<span style="display:none;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.04em;color:var(--ink-soft);white-space:nowrap;align-items:center">{{ r.name }}</span>
+<div style="width:56px;height:56px;border-radius:var(--r-sm);overflow:hidden;background:var(--paper-pure);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none">
+<img src="{{ r.logo }}" alt="{{ r.name }}" style="width:100%;height:100%;object-fit:contain;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+<span style="display:none;width:100%;height:100%;align-items:center;justify-content:center;text-align:center;padding:4px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.02em;color:var(--ink-soft)">{{ r.name }}</span>
 </div>
 </sc-for>
 </div>
@@ -629,14 +629,14 @@ class Component extends DCLogic {
           { n: 'B', title: 'Insight', paras: ['LehLah already sits at the point where a creator’s content meets a purchase — through Auto-DM for creators on the platform, and through affiliate links for creators who aren’t. We already had the raw signal to close this gap. It just needed to become a first-class feature a brand could open and trust: Campaign Report.'] },
           { n: 'C', title: 'Solution: two paths, one report', paras: ['A campaign report had to work whether or not the creator was already on LehLah, so we built two attribution paths that land in the same place.'], bullets: [{ k: 'LEHLAH CREATOR', v: 'Uses Auto-DM and tags the product in their content — sales are tracked automatically.' }, { k: 'NON-LEHLAH CREATOR', v: 'Gets a generated affiliate link for the product to use in their story or reel — sales attributed to that link.' }, { k: 'BRAND VIEW', v: 'Both paths roll into one full-funnel report: what the creator actually drove, not just what they posted.' }] },
           { n: 'D', title: 'Retailer-level attribution', paras: ['Sales don’t happen in one place. A brand’s campaign can drive purchases on a marketplace as easily as on their own site, so the report breaks sales down by retailer instead of assuming a single storefront.'], retailers: [
-            { name: 'Myntra', logo: 'images/logos/retailers/myntra.png' },
-            { name: 'Flipkart', logo: 'images/logos/retailers/flipkart.png' },
-            { name: 'Meesho', logo: 'images/logos/retailers/meesho.png' },
-            { name: 'Amazon', logo: 'images/logos/retailers/amazon.png' },
-            { name: 'Shopsy', logo: 'images/logos/retailers/shopsy.png' },
-            { name: 'Nykaa', logo: 'images/logos/retailers/nykaa.png' },
-            { name: 'Tira', logo: 'images/logos/retailers/tira.png' },
-            { name: 'Ajio', logo: 'images/logos/retailers/ajio.png' }
+            { name: 'Myntra', logo: 'images/logos/myntra.png' },
+            { name: 'Flipkart', logo: 'images/logos/flipkart.png' },
+            { name: 'Meesho', logo: 'images/logos/meesho.png' },
+            { name: 'Amazon', logo: 'images/logos/amazon.png' },
+            { name: 'Shopsy', logo: 'images/logos/shopsy.png' },
+            { name: 'Nykaa', logo: 'images/logos/nykaa.png' },
+            { name: 'Tira', logo: 'images/logos/tira.png' },
+            { name: 'Ajio', logo: 'images/logos/ajio.png' }
           ] },
           { n: 'E', title: 'D2C, integrated in under 2 minutes', paras: ['Marketplaces cover most of a brand’s sales, but not all of it. The LehLah Shopify app connects a brand’s own D2C storefront to the same report in under two minutes, so direct-website sales sit alongside marketplace sales instead of living in a separate spreadsheet.'], bullets: [{ k: 'INSTALL', v: 'Brand installs the LehLah Shopify app on their store.' }, { k: 'CONNECT', v: 'The app links storefront orders to the campaign automatically — no manual export.' }, { k: 'REPORT', v: 'D2C sales appear in the same Campaign Report as every marketplace.' }] },
           { n: 'F', title: 'Impact', paras: ['Campaign Report turns "we posted some content and got some views" into a number a brand can put in a renewal deck: this creator, on this campaign, drove this many sales, on these retailers. That’s the difference between influencer marketing bought as media and influencer marketing run as a growth channel with a payback period.'] },
