@@ -381,6 +381,7 @@ a:hover{color:var(--amber-deep)}
 <sc-if value="{{ cs.hasDemo }}" hint-placeholder-val="{{ false }}">
 <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px, 100%), 1fr));gap:56px;align-items:center;margin:48px 0 8px;padding:40px;background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r-lg)">
 <div style="display:flex;justify-content:center">
+<sc-if value="{{ cs.isPhoneDemo }}" hint-placeholder-val="{{ true }}">
 <div style="width:296px;flex:none;background:var(--ink);border-radius:42px;padding:11px;box-shadow:var(--shadow-poster)">
 <div style="position:relative;aspect-ratio:9/19.5;background:var(--paper-sunk);border-radius:32px;overflow:hidden;display:flex;align-items:center;justify-content:center">
 <sc-if value="{{ cs.hasDemoVideo }}" hint-placeholder-val="{{ false }}">
@@ -401,6 +402,34 @@ a:hover{color:var(--amber-deep)}
 </sc-if>
 </div>
 </div>
+</sc-if>
+<sc-if value="{{ cs.isDesktopDemo }}" hint-placeholder-val="{{ false }}">
+<div style="width:100%;max-width:600px;flex:none;background:var(--ink);border-radius:14px;box-shadow:var(--shadow-poster);overflow:hidden">
+<div style="height:32px;display:flex;align-items:center;gap:6px;padding:0 14px;background:#2b2b2b">
+<span style="width:10px;height:10px;border-radius:50%;background:#FF5F57"></span>
+<span style="width:10px;height:10px;border-radius:50%;background:#FEBC2E"></span>
+<span style="width:10px;height:10px;border-radius:50%;background:#28C840"></span>
+</div>
+<div style="position:relative;aspect-ratio:16/10;background:var(--paper-sunk);overflow:hidden;display:flex;align-items:center;justify-content:center">
+<sc-if value="{{ cs.hasDemoVideo }}" hint-placeholder-val="{{ false }}">
+<video src="{{ cs.demoSrc }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ true }}" style="width:100%;height:100%;object-fit:cover"></video>
+</sc-if>
+<sc-if value="{{ cs.hasDemoEmbed }}" hint-placeholder-val="{{ false }}">
+<iframe src="{{ cs.demoEmbed }}" allow="autoplay" allowfullscreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe>
+</sc-if>
+<sc-if value="{{ cs.hasDemoImage }}" hint-placeholder-val="{{ false }}">
+<img src="{{ cs.demoImg }}" alt="{{ cs.demoImgAlt }}" style="width:100%;height:100%;object-fit:cover;display:block" />
+</sc-if>
+<sc-if value="{{ cs.noDemoAsset }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:32px;text-align:center">
+<span style="width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--amber);font-size:15px">▶</span>
+<span style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">Screen recording</span>
+<span class="body-sm" style="color:var(--ink-ghost);font-size:12px">Send me the mp4 and it autoplays here.</span>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
 </div>
 <div style="min-width:0">
 <span class="overline" style="color:var(--amber-deep)">See it work<sc-if value="{{ cs.demoDuration }}" hint-placeholder-val="{{ false }}"> · {{ cs.demoDuration }}</sc-if></span>
@@ -615,6 +644,7 @@ class Component extends DCLogic {
         facts: [{ k: 'Role', v: 'PM — problem framing to launch' }, { k: 'Buyer', v: 'Brands running IM campaigns' }, { k: 'Surface', v: 'Brand dashboard · Campaign Report' }, { k: 'Status', v: 'Live, iterating' }],
         metrics: [{ v: '<2 min', l: 'D2C storefront connected via the LehLah Shopify app' }, { v: '8+ retailers', l: 'Sales tracked across Myntra, Flipkart, Amazon and more' }, { v: 'Full-funnel', l: 'Content → sales, for LehLah and affiliate creators alike' }],
         demo: {
+          device: 'desktop',
           src: '', embed: 'https://drive.google.com/file/d/1LH6rnddOULFuT8LUagJ9b4hsR8SHSRrq/preview', img: '',
           caption: 'A brand campaign report showing full-funnel sales — Auto-DM and affiliate content side by side, broken down by retailer.',
           duration: '',
@@ -753,6 +783,8 @@ class Component extends DCLogic {
     const demo = cur.demo || null;
     const cs = Object.assign({}, cur, {
       hasDemo: !!demo,
+      isDesktopDemo: !!(demo && demo.device === 'desktop'),
+      isPhoneDemo: !!(demo && demo.device !== 'desktop'),
       hasDemoVideo: !!(demo && demo.src),
       hasDemoEmbed: !!(demo && !demo.src && demo.embed),
       hasDemoImage: !!(demo && !demo.src && !demo.embed && demo.img),
