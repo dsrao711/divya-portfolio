@@ -386,6 +386,9 @@ a:hover{color:var(--amber-deep)}
 <sc-if value="{{ cs.hasDemoVideo }}" hint-placeholder-val="{{ false }}">
 <video src="{{ cs.demoSrc }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" controls="{{ true }}" style="width:100%;height:100%;object-fit:cover"></video>
 </sc-if>
+<sc-if value="{{ cs.hasDemoEmbed }}" hint-placeholder-val="{{ false }}">
+<iframe src="{{ cs.demoEmbed }}" allow="autoplay" allowfullscreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe>
+</sc-if>
 <sc-if value="{{ cs.hasDemoImage }}" hint-placeholder-val="{{ false }}">
 <img src="{{ cs.demoImg }}" alt="{{ cs.demoImgAlt }}" style="width:100%;height:100%;object-fit:cover;display:block" />
 </sc-if>
@@ -453,6 +456,16 @@ a:hover{color:var(--amber-deep)}
 <div style="margin-top:8px;border:1px dashed var(--line-strong);background:var(--paper-sunk);border-radius:var(--r-sm);min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
 <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">{{ sec.visual }}</span>
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — replace with real chart or screenshot</span>
+</div>
+</sc-if>
+<sc-if value="{{ sec.hasRetailers }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:10px">
+<sc-for list="{{ sec.retailers }}" as="r" hint-placeholder-count="8">
+<div style="height:44px;padding:0 16px;border-radius:var(--r-sm);background:var(--paper-raised);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex:none;min-width:72px">
+<img src="{{ r.logo }}" alt="{{ r.name }}" style="height:20px;max-width:88px;width:auto;display:block;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'" />
+<span style="display:none;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.04em;color:var(--ink-soft);white-space:nowrap;align-items:center">{{ r.name }}</span>
+</div>
+</sc-for>
 </div>
 </sc-if>
 </div>
@@ -546,7 +559,7 @@ a:hover{color:var(--amber-deep)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;#C25E2A&quot;,&quot;#6E2433&quot;,&quot;#3B5B52&quot;,&quot;#1B1712&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { page: 'home', slug: 'auto-dm', note: 0, labFilter: 'All', noteFilter: 'All' };
+  state = { page: 'home', slug: 'campaign-report', note: 0, labFilter: 'All', noteFilter: 'All' };
 
   constructor(p) { super(p); this.rootRef = React.createRef(); }
   componentDidMount() { this.applyTheme(); }
@@ -594,23 +607,40 @@ class Component extends DCLogic {
         ]
       },
       {
-        num: '02', slug: 'auto-dm', title: 'Auto-DM', years: '2024–25', kind: 'product',
-        subtitle: 'Building a commerce engine around Instagram engagement',
-        highlight: '80–90%', highlightLabel: 'Of creator sales influenced',
-        meta: 'LEHLAH · 2024–2025', tags: ['Creator Commerce', 'Growth', '0→1', 'Platform Constraints'],
-        facts: [{ k: 'Role', v: 'PM — discovery to launch' }, { k: 'Team', v: 'Placeholder: eng, design, ops' }, { k: 'Surface', v: 'Instagram · Creator app' }, { k: 'Status', v: 'Live, iterating' }],
-        metrics: [{ v: '80–90%', l: 'Creator sales influenced by Auto-DM' }, { v: '₹10Cr+', l: 'Monthly platform revenue during scale' }, { v: 'Placeholder', l: 'Reply-to-click conversion' }],
+        num: '02', slug: 'campaign-report', title: 'Campaign Report', years: '2025–26', kind: 'product',
+        subtitle: 'Building the ROI measurement layer for influencer marketing campaigns',
+        highlight: 'Full-funnel', highlightLabel: 'Content → sales, attributed and provable',
+        cardLabel: 'Turning campaign views into provable revenue',
+        meta: 'LEHLAH · 2025–PRESENT', tags: ['Attribution', 'Analytics', 'B2B SaaS', 'Influencer Marketing'],
+        facts: [{ k: 'Role', v: 'PM — problem framing to launch' }, { k: 'Buyer', v: 'Brands running IM campaigns' }, { k: 'Surface', v: 'Brand dashboard · Campaign Report' }, { k: 'Status', v: 'Live, iterating' }],
+        metrics: [{ v: '<2 min', l: 'D2C storefront connected via the LehLah Shopify app' }, { v: '8+ retailers', l: 'Sales tracked across Myntra, Flipkart, Amazon and more' }, { v: 'Full-funnel', l: 'Content → sales, for LehLah and affiliate creators alike' }],
+        demo: {
+          src: '', embed: 'https://drive.google.com/file/d/1LH6rnddOULFuT8LUagJ9b4hsR8SHSRrq/preview', img: '',
+          caption: 'A brand campaign report showing full-funnel sales — Auto-DM and affiliate content side by side, broken down by retailer.',
+          duration: '',
+          points: [
+            { k: '01', v: 'Every piece of campaign content — LehLah creator or affiliate — rolls up into one report.' },
+            { k: '02', v: 'Sales are attributed down to the retailer: Myntra, Flipkart, Amazon and more.' },
+            { k: '03', v: 'A brand’s own D2C store joins the same report once the Shopify app is installed.' }
+          ]
+        },
         sections: [
-          { n: 'A', title: 'Problem', paras: ['A creator posts, the comments fill with "link?", and the sale dies in the gap between intent and a link. Creators were answering manually, which meant the highest-intent moment of the funnel depended on someone being awake.', 'The product question was not "how do we automate DMs". It was: where exactly does purchase intent appear, and what is the shortest path from that moment to a checkout?'] },
-          { n: 'B', title: 'Why this mattered', paras: ['Placeholder for the business framing: attributable creator revenue was concentrated in the comment-to-DM handoff, so any leak there was a revenue leak, not a UX annoyance.'], bullets: [{ k: 'USER', v: 'Creators lost sales while sleeping, travelling, or posting at scale.' }, { k: 'BUSINESS', v: 'Unattributed traffic left the platform, taking the commission with it.' }, { k: 'PLATFORM', v: 'Instagram engagement was the only reliable distribution we had.' }] },
-          { n: 'C', title: 'User journey', paras: ['Comment → automated reply → DM with the right link → landing → checkout. Every arrow is a drop-off we could name and measure.'], visual: 'Funnel diagram: comment → DM → click → purchase' },
-          { n: 'D', title: 'Meta / platform constraints', paras: ['Working on top of someone else\'s graph API sets the boundaries before design starts: messaging windows, rate limits, permission scopes, review cycles, account-level eligibility.', 'Placeholder for the specific constraint list and how each one reshaped the flow.'] },
-          { n: 'E', title: 'Options considered', paras: ['We had three plausible shapes, and the trade-off was setup effort versus precision of the link sent.'], bullets: [{ k: 'OPT 1', v: 'Single fallback link per creator — trivial setup, poor relevance.' }, { k: 'OPT 2', v: 'Per-post keyword mapping — precise, but setup cost per post.' }, { k: 'OPT 3', v: 'Auto-match post to product from the creator\'s catalogue — best experience, hardest to get right.' }] },
-          { n: 'F', title: 'Product decision', paras: ['Placeholder: shipped the option that made the first successful DM happen in under a minute, then layered precision on top once creators had felt the payoff once.', 'The decision I keep coming back to: activation beat sophistication. A creator who never completes setup gets 0% of a perfect matching algorithm.'] },
-          { n: 'G', title: 'Edge cases', paras: ['Placeholder — the unglamorous half of the work.'], bullets: [{ k: 'CASE', v: 'Multiple keywords matching one comment.' }, { k: 'CASE', v: 'Comment on an old post with a dead link.' }, { k: 'CASE', v: 'Disconnected or re-authorised social account.' }, { k: 'CASE', v: 'Spam and bot comments triggering sends.' }] },
-          { n: 'H', title: 'Experimentation & adoption', paras: ['Placeholder for the experiment log: reply copy, trigger breadth, setup prompts, and what actually moved reply-to-click.'], visual: 'Adoption chart: creators with Auto-DM active over time' },
-          { n: 'I', title: 'Impact', paras: ['Auto-DM now influences roughly 80–90% of creator sales on the platform, during a period where the platform was doing ₹10Cr+ in monthly revenue. Everything beyond those two numbers is placeholder until you confirm what is shareable.'] },
-          { n: 'J', title: 'Learnings & what I\'d do differently', paras: ['Placeholder. The honest version: I would instrument setup abandonment from day one, and I would have treated platform-permission failure as a product state with its own copy rather than an error.'] }
+          { n: 'A', title: 'Problem', paras: ['Brands run influencer marketing campaigns and get views, likes and comments back — not proof that anything sold. They spend lakhs on creators, the content performs, and then the funnel just stops. There is no single method to say whether the campaign actually worked.', 'Without that proof, every renewal conversation starts from zero. The brand has to take it on faith that the spend was worth it.'], bullets: [{ k: 'BRANDS SEE', v: 'Views, likes, comments — engagement with no revenue attached.' }, { k: 'BRANDS WANT', v: 'How much did this creator, this post, this campaign actually sell?' }, { k: 'THE GAP', v: 'No single source of truth connects content to a completed sale.' }] },
+          { n: 'B', title: 'Insight', paras: ['LehLah already sits at the point where a creator’s content meets a purchase — through Auto-DM for creators on the platform, and through affiliate links for creators who aren’t. We already had the raw signal to close this gap. It just needed to become a first-class feature a brand could open and trust: Campaign Report.'] },
+          { n: 'C', title: 'Solution: two paths, one report', paras: ['A campaign report had to work whether or not the creator was already on LehLah, so we built two attribution paths that land in the same place.'], bullets: [{ k: 'LEHLAH CREATOR', v: 'Uses Auto-DM and tags the product in their content — sales are tracked automatically.' }, { k: 'NON-LEHLAH CREATOR', v: 'Gets a generated affiliate link for the product to use in their story or reel — sales attributed to that link.' }, { k: 'BRAND VIEW', v: 'Both paths roll into one full-funnel report: what the creator actually drove, not just what they posted.' }] },
+          { n: 'D', title: 'Retailer-level attribution', paras: ['Sales don’t happen in one place. A brand’s campaign can drive purchases on a marketplace as easily as on their own site, so the report breaks sales down by retailer instead of assuming a single storefront.'], retailers: [
+            { name: 'Myntra', logo: 'images/logos/retailers/myntra.png' },
+            { name: 'Flipkart', logo: 'images/logos/retailers/flipkart.png' },
+            { name: 'Meesho', logo: 'images/logos/retailers/meesho.png' },
+            { name: 'Amazon', logo: 'images/logos/retailers/amazon.png' },
+            { name: 'Shopsy', logo: 'images/logos/retailers/shopsy.png' },
+            { name: 'Nykaa', logo: 'images/logos/retailers/nykaa.png' },
+            { name: 'Tira', logo: 'images/logos/retailers/tira.png' },
+            { name: 'Ajio', logo: 'images/logos/retailers/ajio.png' }
+          ] },
+          { n: 'E', title: 'D2C, integrated in under 2 minutes', paras: ['Marketplaces cover most of a brand’s sales, but not all of it. The LehLah Shopify app connects a brand’s own D2C storefront to the same report in under two minutes, so direct-website sales sit alongside marketplace sales instead of living in a separate spreadsheet.'], bullets: [{ k: 'INSTALL', v: 'Brand installs the LehLah Shopify app on their store.' }, { k: 'CONNECT', v: 'The app links storefront orders to the campaign automatically — no manual export.' }, { k: 'REPORT', v: 'D2C sales appear in the same Campaign Report as every marketplace.' }] },
+          { n: 'F', title: 'Impact', paras: ['Campaign Report turns "we posted some content and got some views" into a number a brand can put in a renewal deck: this creator, on this campaign, drove this many sales, on these retailers. That’s the difference between influencer marketing bought as media and influencer marketing run as a growth channel with a payback period.'] },
+          { n: 'G', title: 'What I owned', paras: ['Defined the attribution model across LehLah and affiliate creators, designed the full-funnel report structure end-to-end, and worked with Engineering to wire up retailer- and D2C-level tracking.'] }
         ]
       },
       {
@@ -724,9 +754,11 @@ class Component extends DCLogic {
     const cs = Object.assign({}, cur, {
       hasDemo: !!demo,
       hasDemoVideo: !!(demo && demo.src),
-      hasDemoImage: !!(demo && !demo.src && demo.img),
-      noDemoAsset: !!(demo && !demo.src && !demo.img),
+      hasDemoEmbed: !!(demo && !demo.src && demo.embed),
+      hasDemoImage: !!(demo && !demo.src && !demo.embed && demo.img),
+      noDemoAsset: !!(demo && !demo.src && !demo.embed && !demo.img),
       demoSrc: demo ? demo.src : '',
+      demoEmbed: demo ? demo.embed : '',
       demoImg: demo ? demo.img : '',
       demoImgAlt: demo ? demo.imgAlt : '',
       demoCaption: demo ? demo.caption : '',
@@ -735,7 +767,8 @@ class Component extends DCLogic {
       sections: cur.sections.map(sec => Object.assign({}, sec, {
         id: 'sec-' + sec.n, href: '#sec-' + sec.n,
         hasBullets: !!(sec.bullets && sec.bullets.length),
-        hasVisual: !!sec.visual && !sec.img, bullets: sec.bullets || []
+        hasVisual: !!sec.visual && !sec.img, bullets: sec.bullets || [],
+        hasRetailers: !!(sec.retailers && sec.retailers.length), retailers: sec.retailers || []
       }))
     });
 
@@ -779,7 +812,6 @@ class Component extends DCLogic {
         { name: 'Creator Marketplace', year: '2025', problem: 'Brands could not find the right creators themselves.', role: 'PM · Two-sided', impact: 'Placeholder' },
         { name: 'Paid Collaborations', year: '2025', problem: 'Paid deals lived entirely outside the product.', role: 'PM · Monetisation', impact: 'Placeholder' },
         { name: 'Insights', year: '2026', problem: 'Data existed; decisions did not follow from it.', role: 'PM · Analytics', impact: 'Placeholder' },
-        { name: 'Campaign Reports', year: '2026', problem: 'Brands needed proof of return, in their format.', role: 'PM · Reporting', impact: 'Renewal driver' },
         { name: 'Luna', year: '2026', problem: 'The brand side needed its own product, not a tab.', role: 'PM · B2B SaaS', impact: 'SaaS foundation' },
         { name: 'Subscription & Payments', year: '2026', problem: 'Selling SaaS needs plans, trials, credits and invoices.', role: 'PM · Razorpay', impact: 'Revenue infra' },
         { name: 'Affiliate Tracking', year: '2025', problem: 'Attribution is the product in creator commerce.', role: 'PM · Systems', impact: 'Trust layer' },
