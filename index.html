@@ -674,18 +674,25 @@ class Component extends DCLogic {
         ]
       },
       {
-        num: '03', slug: 'creator-activation', title: 'Creator Activation', years: '2024–25', kind: 'product',
-        subtitle: 'Moving creators from signup to their first meaningful action',
-        highlight: 'Funnel', highlightLabel: 'Signup → first monetisable action',
-        meta: 'LEHLAH · 2024–2025', tags: ['Growth', 'Onboarding', 'Experimentation', 'Retention'],
-        facts: [{ k: 'Role', v: 'PM — owned the funnel' }, { k: 'Surface', v: 'Creator app' }, { k: 'Method', v: 'Funnel analysis + experiments' }, { k: 'Status', v: 'Placeholder' }],
-        metrics: [{ v: 'Placeholder', l: 'Signup → social connect' }, { v: 'Placeholder', l: 'Connect → first link created' }, { v: 'Placeholder', l: 'Activation → first sale' }],
+        num: '03', slug: 'brand-pmf', title: 'Brand PMF', years: '2025–26', kind: 'product',
+        subtitle: 'Finding product-market fit between brands and the creators already selling for them',
+        highlight: '13K+', highlightLabel: 'Monthly active creators driving organic sales',
+        cardLabel: 'Surfacing creators who already sell for a brand, for free',
+        meta: 'LEHLAH · 2025–PRESENT', tags: ['Product-Market Fit', 'Creator Discovery', 'B2B SaaS', 'Attribution'],
+        facts: [{ k: 'Role', v: 'PM — problem framing to launch' }, { k: 'Buyer', v: 'Brands (HUL, Marico, D2C)' }, { k: 'Surface', v: 'Brand dashboard · Creator Discovery' }, { k: 'Status', v: 'Live, driving renewals' }],
+        metrics: [
+          { v: '13K+', l: 'Monthly active LehLah creators, across geographies' },
+          { v: 'Lakhs in sales', l: 'Generated organically for brands before they knew it' },
+          { v: 'HUL · Marico', l: 'Now run recurring campaigns off this signal' }
+        ],
         sections: [
-          { n: 'A', title: 'Problem', paras: ['Signups were not the constraint. A creator who signs up and never connects a social account or creates a link is indistinguishable from a creator who never arrived.', 'So the real target was not registrations — it was the first action that could plausibly earn the creator money.'] },
-          { n: 'B', title: 'Defining activation', paras: ['Placeholder: we needed one definition of "activated" that correlated with retention and revenue rather than one that flattered the dashboard.'], bullets: [{ k: 'STEP 1', v: 'Signup' }, { k: 'STEP 2', v: 'Social connection' }, { k: 'STEP 3', v: 'First link or collection created' }, { k: 'STEP 4', v: 'Auto-DM activated' }, { k: 'STEP 5', v: 'First attributed click / sale' }] },
-          { n: 'C', title: 'Where creators dropped', paras: ['Placeholder for the funnel numbers and the qualitative reasons behind each drop.'], visual: 'Activation funnel with stage-by-stage drop-off' },
-          { n: 'D', title: 'Experiments', paras: ['Placeholder: sequencing of activation tasks, rewards as a nudge, reducing the number of decisions before the first link, and re-ordering the social connect step.'], bullets: [{ k: 'EXP', v: 'Activation checklist vs. single next-best-action.' }, { k: 'EXP', v: 'Rewards surfaced before vs. after first link.' }, { k: 'EXP', v: 'Guided first collection from existing content.' }] },
-          { n: 'E', title: 'What I\'d do differently', paras: ['Placeholder. Early version: I optimised the steps we owned before understanding which creators were never going to activate regardless — segmentation before funnel surgery.'] }
+          { n: 'A', title: 'Problem', paras: ['Running an influencer campaign looks straightforward from the outside: find creators who match the brand\'s aesthetic, brief them, get the content live. The hard part is what happens after the content goes live — brands care about revenue, and a post full of views and engagement doesn\'t hand them any.', 'The honest fallback is to spend more: run the same content as paid ads to force a sale out of it. That works, but it means the organic creator spend bought attention, not revenue — the two budgets never talk to each other.'], bullets: [{ k: 'STEP 1', v: 'Find creators matching the brand\'s aesthetic.' }, { k: 'STEP 2', v: 'Brief them, get content live.' }, { k: 'WHAT BRANDS ACTUALLY WANT', v: 'Proof the content sold something.' }, { k: 'THE FALLBACK', v: 'Pay again, in ads, to manufacture the sale the organic post didn\'t prove.' }] },
+          { n: 'B', title: 'Insight', paras: ['We already had the answer sitting in our own data and didn\'t know it yet. LehLah has 13K+ monthly active creators across geographies making content and driving real sales through affiliate links — for brands who had never run a single campaign with us.', 'Take Mamaearth: a popular D2C brand that LehLah creators were very likely already generating sales for, organically, through affiliate content Mamaearth never briefed and never paid for.'] },
+          { n: 'C', title: 'Solution: LehLah SaaS creator discovery', paras: ['LehLah SaaS bridges that gap. It shows a brand exactly which LehLah creators are already driving sales for them, organically, on the LehLah app — before any campaign, any brief, any spend.'], bullets: [{ k: 'WHAT THIS MEANS', v: 'The creator is already endorsing the brand for free.' }, { k: 'AND', v: 'They\'ve already driven a real, attributed sale — not just a like or a follow.' }, { k: 'WHAT THE BRAND GETS', v: 'Visibility into these creators, the ability to launch a campaign, connect directly, and track sales going forward.' }, { k: 'WHAT THE CREATOR GETS', v: 'A direct paid opportunity with a brand their own audience was already buying.' }] },
+          { n: 'D', title: 'Why this beats searching for creators cold', paras: ['Every creator marketplace can filter by category, follower count or aesthetic. None of that tells a brand who actually converts. Organic, unprompted sales is a far stronger signal than any filter, because it isn\'t a guess about fit — it already happened.', 'That\'s the product-market fit this feature finds: not "which creators look right for this brand", but "which creators have already proven their audience buys this brand."'] },
+          { n: 'E', title: 'Proof: HUL and Marico', paras: ['LehLah creators had organically generated lakhs of rupees in sales for brands like HUL and Marico — unknowingly, on both sides. Once that surfaced through LehLah SaaS, it changed the relationship: both brands now run regular campaigns with LehLah, and use the discovery tool as their primary way of finding creators worth paying.'] },
+          { n: 'F', title: 'Impact', paras: ['This turned an invisible, unmonetised organic effect into a renewal engine: brands didn\'t need to be sold on influencer marketing in the abstract — they were shown the specific creators and the specific rupees already flowing, then asked if they wanted more of it, faster and on purpose.'] },
+          { n: 'G', title: 'What I owned', paras: ['Defined the problem, connected our existing affiliate-sales data to a brand-facing discovery product, and shaped how a brand goes from "here\'s who\'s already selling for you" to a running campaign with that same creator.'] }
         ]
       },
       {
