@@ -591,7 +591,7 @@ class Component extends DCLogic {
   state = { page: 'home', slug: 'campaign-report', note: 0, labFilter: 'All', noteFilter: 'All' };
 
   constructor(p) { super(p); this.rootRef = React.createRef(); }
-  componentDidMount() { this.applyTheme(); }
+  componentDidMount() { this.applyTheme(); this.watchVideos(); }
   componentDidUpdate() { this.applyTheme(); }
   applyTheme() {
     const el = this.rootRef.current; if (!el) return;
@@ -600,14 +600,24 @@ class Component extends DCLogic {
     Object.keys(green).forEach(k => el.style.setProperty(k, green[k]));
     const a = this.props.accent;
     if (a) { el.style.setProperty('--amber', a); el.style.setProperty('--amber-deep', a); }
-    // Demo videos are authored with autoplay/muted/loop, but the template
-    // engine doesn't reliably carry autoplay/muted through to the real DOM
-    // attributes — force them here so "See it work" actually autoplays.
-    el.querySelectorAll('video').forEach(v => {
-      v.muted = true;
-      v.loop = true;
-      v.play().catch(() => {});
-    });
+  }
+  // Demo videos are authored with autoplay/muted/loop, but the template
+  // engine doesn't reliably carry autoplay/muted through to the real DOM
+  // attributes, and the <video> tag itself lands in the DOM on a later
+  // tick than componentDidMount/componentDidUpdate (the sc-if/sc-for
+  // custom elements resolve their content asynchronously). A
+  // MutationObserver catches it whenever it actually appears.
+  watchVideos() {
+    const el = this.rootRef.current; if (!el) return;
+    const arm = (v) => { v.muted = true; v.loop = true; v.play().catch(() => {}); };
+    el.querySelectorAll('video').forEach(arm);
+    new MutationObserver((muts) => {
+      muts.forEach((m) => m.addedNodes.forEach((n) => {
+        if (n.nodeType !== 1) return;
+        if (n.tagName === 'VIDEO') arm(n);
+        else n.querySelectorAll && n.querySelectorAll('video').forEach(arm);
+      }));
+    }).observe(el, { childList: true, subtree: true });
   }
 
   go(page, extra) { this.setState(Object.assign({ page }, extra || {})); window.scrollTo(0, 0); }
