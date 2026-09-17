@@ -600,6 +600,14 @@ class Component extends DCLogic {
     Object.keys(green).forEach(k => el.style.setProperty(k, green[k]));
     const a = this.props.accent;
     if (a) { el.style.setProperty('--amber', a); el.style.setProperty('--amber-deep', a); }
+    // Demo videos are authored with autoplay/muted/loop, but the template
+    // engine doesn't reliably carry autoplay/muted through to the real DOM
+    // attributes — force them here so "See it work" actually autoplays.
+    el.querySelectorAll('video').forEach(v => {
+      v.muted = true;
+      v.loop = true;
+      v.play().catch(() => {});
+    });
   }
 
   go(page, extra) { this.setState(Object.assign({ page }, extra || {})); window.scrollTo(0, 0); }
