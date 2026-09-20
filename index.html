@@ -756,16 +756,26 @@ class Component extends DCLogic {
         ]
       },
       {
-        num: '02', slug: 'eng-catalogue', title: 'Catalogue & Storefront', years: '2022–24', kind: 'eng',
-        subtitle: 'Placeholder — the service or surface you owned end to end',
-        highlight: 'Placeholder', highlightLabel: 'Scale or reliability metric',
-        meta: 'FYND × RELIANCE RETAIL', tags: ['Backend', 'APIs', 'Data Models'],
-        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'Stack', v: 'Placeholder' }, { k: 'Scope', v: 'Placeholder' }, { k: 'Status', v: 'Shipped' }],
-        metrics: [{ v: 'Placeholder', l: 'Throughput or catalogue size' }, { v: 'Placeholder', l: 'Latency / reliability' }, { v: 'Placeholder', l: 'Business impact' }],
+        num: '02', slug: 'eng-catalogue', title: 'Designing a Configurable Order Journey Engine', years: '2022–2024', kind: 'eng',
+        subtitle: 'One state-machine API instead of five forked order flows — built so Fynd Platform could onboard new business verticals without touching core code',
+        highlight: '6+ business verticals · 1 configurable engine', highlightLabel: 'Scale of adoption',
+        cardLabel: 'Systems Design',
+        meta: 'FYND × RELIANCE RETAIL', tags: ['Systems Design', 'State Machines', 'OMS', 'APIs'],
+        facts: [{ k: 'Role', v: 'Software Engineer, OMS Team' }, { k: 'System', v: 'Central Order Management Service, Fynd Platform' }, { k: 'Now powers', v: 'Jio Commerce Platform' }, { k: 'Scale', v: 'Tira, Ajio, Swadesh, Azorte, Netmeds, JioMart, JioMart Partner' }],
+        metrics: [],
         sections: [
-          { n: 'A', title: 'What it was', paras: ['Placeholder — the system, who depended on it, and what broke before it existed.'] },
-          { n: 'B', title: 'Design & trade-offs', paras: ['Placeholder — the contract and data-model choices, and what you deliberately did not build.'], bullets: [{ k: 'TRADE-OFF', v: 'Placeholder.' }, { k: 'TRADE-OFF', v: 'Placeholder.' }] },
-          { n: 'C', title: 'Outcome', paras: ['Placeholder — what shipped and how it was measured.'], visual: 'Architecture or dashboard screenshot' }
+          { n: '01', title: 'Context: why the OMS is the hard part', paras: ['Fynd Platform is an omni-channel commerce platform — a Shopify-class system, but with faster turnaround and support, because Fynd builds and owns every integration instead of leaving it to the client.', 'The Order Management System sits at the center of it. Catalogue, Inventory, Delivery Partner, Payments and Finance services all feed into it, but the actual business logic and state transitions live in the OMS. Every order breaks down into shipments, shipments into bags, and every bag moves through a defined state tree — placed, confirmed, invoiced, DP assigned, packed, picked, delivered — with cancellation and return branches at multiple points.'] },
+          { n: '02', title: 'The problem: one state tree, five different businesses', paras: ['That state tree wasn\'t actually one journey — it was several, and the list kept growing as Reliance brought more brands onto the platform.', 'Each business vertical needed the same underlying states to behave differently:'], bullets: [{ k: 'STORE OS / BOPIS', v: 'Customer chooses pickup vs. delivery at checkout, which skips or reroutes standard delivery steps entirely' }, { k: 'JIOMART', v: 'Assigns its own delivery partner only after packing, since it doesn\'t rely on external logistics like Shiprocket' }, { k: 'FYND COMMERCE', v: 'Checks delivery-partner availability before packing, to protect small sellers from unfulfillable orders' }, { k: 'MARKETPLACE ORDERS', v: 'Cancellation is generally blocked post-pack, but specific marketplaces need exceptions' }, { k: 'SWADESH', v: 'Runs make-to-order, breaking the standard timeline assumption altogether' }] },
+          { n: '03', title: 'What I built', paras: ['Instead of forking the state manager per vertical or layering in more conditional logic, I built an API that makes the state tree itself configurable — per business vertical — without changing core code.', 'Any vertical can now define which actions fire on which state, whether a transition is automatic or manual, and where a step like DP assignment or packing sits in the sequence. Onboarding a new business model becomes a configuration exercise, not an engineering sprint.'] },
+          { n: '04', title: 'Trade-offs I navigated', paras: ['The risk on either side was real: too rigid, and every new vertical needs a code change; too flexible, and you end up with an unreadable rules engine nobody can debug.', 'I anchored the configuration surface to the variance I could actually observe across live verticals — sequencing, automation vs. manual triggers, and cancellation windows — rather than designing for hypothetical future cases. That kept the API expressive enough to solve real problems without becoming a general-purpose scripting layer.'] },
+          { n: '05', title: 'Impact', paras: ['After Reliance\'s acquisition of Fynd, this platform became the backbone of Jio Commerce. The configurable journey engine is a direct reason a made-to-order D2C brand like Swadesh and a hyperlocal grocery operation like JioMart can run on the same core OMS today — each with a completely different order journey, none of it hardcoded.'], retailers: [
+            { name: 'Tira', logo: 'images/logos/tira.png' },
+            { name: 'Ajio', logo: 'images/logos/ajio.png' },
+            { name: 'Netmeds', logo: 'images/logos/netmeds.png' },
+            { name: 'JioMart', logo: 'images/logos/jiomart.png' },
+            { name: 'Swadesh', logo: 'images/logos/swadesh.png' },
+            { name: 'Azorte', logo: 'images/logos/azorte.png' }
+          ] }
         ]
       },
       {
