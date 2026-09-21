@@ -734,7 +734,7 @@ class Component extends DCLogic {
       {
         num: '01', slug: 'eng-catalogue', title: 'Designing a Configurable Order Journey Engine', years: '2022–2024', kind: 'eng',
         subtitle: 'One state-machine API instead of five forked order flows — built so Fynd Platform could onboard new business verticals without touching core code',
-        highlight: '6+ business verticals · 1 configurable engine', highlightLabel: 'Scale of adoption',
+        highlight: '6+ verticals', highlightLabel: 'Powered by one configurable engine',
         cardLabel: 'Systems Design',
         heroImg: 'images/diagrams/order-journey-engine.png', heroImgAlt: 'Diagram of the configurable state engine: one core order journey with per-vertical delivery-partner rules — BOPIS skips the DP step, JioMart assigns DP after pack, Fynd assigns DP before pack, and Swadesh runs made-to-order.',
         meta: 'FYND × RELIANCE RETAIL', tags: ['Systems Design', 'State Machines', 'OMS', 'APIs'],
@@ -758,7 +758,7 @@ class Component extends DCLogic {
       {
         num: '02', slug: 'eng-oms-regression', title: 'Automating Regression Testing Across OMS Order Journeys', years: '2022–2023', kind: 'eng',
         subtitle: 'Turning a combinatorial QA nightmare into a Slack-alerted pipeline that signed off every release before manual QA began',
-        highlight: '40% reduction in manual QA effort', highlightLabel: 'Impact',
+        highlight: '40%', highlightLabel: 'Reduction in manual QA effort',
         cardLabel: 'Quality & Tooling',
         meta: 'FYND × RELIANCE RETAIL · 2022–2023', tags: ['Test Automation', 'CI/CD', 'OMS', 'Quality Engineering'],
         facts: [{ k: 'Role', v: 'Graduate SDE, OMS Team' }, { k: 'System', v: 'Automated regression suite, CI\'d via Azure Pipelines' }, { k: 'Coverage', v: '100+ test cases across shipment types, journeys, and failure points' }, { k: 'Recognition', v: 'Fynd Star Award — top performer, Fynd Commerce Platform (team of 50)' }],
@@ -769,19 +769,6 @@ class Component extends DCLogic {
           { n: '03', title: 'The debugging side-effect', paras: ['The Slack alerts did more than flag pass/fail — they pinpointed exactly which step in which journey broke, tied to a real shipment and order ID. That meant a developer could go straight to the logs for that specific ID instead of trying to reproduce a failure from a vague QA report. Debugging time dropped because the pipeline had already done the work of isolating where in the state machine things went wrong.'] },
           { n: '04', title: 'Why this felt like product work', paras: ['Designing the 100+ case test matrix meant deciding which edge cases actually mattered — which combinations of shipment type, journey, and failure point were worth covering, and which were noise. That\'s a prioritization exercise, not just a testing one. Working through it with QA and developers, figuring out what to automate versus what still needed human judgment, was my first real exposure to thinking like a PM — before I even had an SDE-1 title.'] },
           { n: '05', title: 'Impact', paras: ['The pipeline cut manual QA effort by 40% and made release sign-off faster and more reliable across the board. It was recognized with the Fynd Star Award — an annual award given by the Engineering Manager to the top-performing member of the Fynd Commerce Platform team, out of a team of 50, awarded to me while still a Graduate SDE.'] }
-        ]
-      },
-      {
-        num: '03', slug: 'eng-program', title: 'Delivery & Tooling', years: '2023–24', kind: 'eng',
-        subtitle: 'Placeholder — internal tooling and cross-team delivery you drove',
-        highlight: 'Placeholder', highlightLabel: 'Time or effort saved',
-        meta: 'FYND × RELIANCE RETAIL', tags: ['Internal Tools', 'Program Management', 'Cross-team'],
-        facts: [{ k: 'Role', v: 'Engineer + programme owner' }, { k: 'Teams', v: 'Placeholder' }, { k: 'Scope', v: 'Placeholder' }, { k: 'Status', v: 'Shipped' }],
-        metrics: [{ v: 'Placeholder', l: 'Teams unblocked' }, { v: 'Placeholder', l: 'Cycle-time change' }, { v: 'Placeholder', l: 'Adoption' }],
-        sections: [
-          { n: 'A', title: 'The bottleneck', paras: ['Placeholder — the coordination or manual step that was slowing delivery.'] },
-          { n: 'B', title: 'What I built', paras: ['Placeholder — the tool or process, and why building it beat asking people to be more careful.'] },
-          { n: 'C', title: 'How it shows up in my PM work', paras: ['Placeholder — the habit this gave you: dependency mapping before commitment.'] }
         ]
       }
     ];
