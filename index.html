@@ -732,22 +732,7 @@ class Component extends DCLogic {
         ]
       },
       {
-        num: '01', slug: 'engineering', title: 'Retail Platform Systems', years: '2022–24', kind: 'eng',
-        subtitle: 'Building systems inside a large retail technology ecosystem',
-        highlight: '2 years', highlightLabel: 'Shipping engineering at enterprise scale',
-        meta: 'FYND × RELIANCE RETAIL · 2022–2024', tags: ['Engineering', 'Systems', 'Enterprise Scale', 'Program Management'],
-        facts: [{ k: 'Role', v: 'Software Engineer' }, { k: 'Context', v: 'Reliance Retail ecosystem' }, { k: 'Scope', v: 'Placeholder: services & surfaces' }, { k: 'Also', v: 'Program management' }],
-        metrics: [{ v: 'Placeholder', l: 'Scale — requests / catalogue size' }, { v: 'Placeholder', l: 'Reliability or latency improvement' }, { v: 'Placeholder', l: 'Business impact of the work' }],
-        sections: [
-          { n: 'A', title: 'Why this is in a PM portfolio', paras: ['I don\'t merely work with engineers. I was one. This section exists so the technical claim in my positioning is evidence rather than an adjective.'] },
-          { n: 'B', title: 'The systems', paras: ['Placeholder for what you built: services, data flows, integrations, and where they sat in the wider retail architecture.'], visual: 'Architecture diagram' },
-          { n: 'C', title: 'Engineering decisions & trade-offs', paras: ['Placeholder: the decisions worth writing down — schema and contract choices, sync vs. async, where you accepted complexity and where you refused it.'], bullets: [{ k: 'TRADE-OFF', v: 'Placeholder: performance vs. maintainability.' }, { k: 'TRADE-OFF', v: 'Placeholder: build vs. reuse an internal platform.' }, { k: 'TRADE-OFF', v: 'Placeholder: migration strategy under live traffic.' }] },
-          { n: 'D', title: 'Scale changes the problem', paras: ['Placeholder: at enterprise scale the interesting failures are not logic bugs, they are coordination, backwards compatibility and blast radius.'] },
-          { n: 'E', title: 'How it shows up in my PM work', paras: ['I can read the codebase, size the work honestly, and tell the difference between "hard" and "tedious". It also means I argue about feasibility with specifics instead of vibes.'] }
-        ]
-      },
-      {
-        num: '02', slug: 'eng-catalogue', title: 'Designing a Configurable Order Journey Engine', years: '2022–2024', kind: 'eng',
+        num: '01', slug: 'eng-catalogue', title: 'Designing a Configurable Order Journey Engine', years: '2022–2024', kind: 'eng',
         subtitle: 'One state-machine API instead of five forked order flows — built so Fynd Platform could onboard new business verticals without touching core code',
         highlight: '6+ business verticals · 1 configurable engine', highlightLabel: 'Scale of adoption',
         cardLabel: 'Systems Design',
@@ -768,6 +753,22 @@ class Component extends DCLogic {
             { name: 'Swadesh', logo: 'images/logos/swadesh.png' },
             { name: 'Azorte', logo: 'images/logos/azorte.png' }
           ] }
+        ]
+      },
+      {
+        num: '02', slug: 'eng-oms-regression', title: 'Automating Regression Testing Across OMS Order Journeys', years: '2022–2023', kind: 'eng',
+        subtitle: 'Turning a combinatorial QA nightmare into a Slack-alerted pipeline that signed off every release before manual QA began',
+        highlight: '40% reduction in manual QA effort', highlightLabel: 'Impact',
+        cardLabel: 'Quality & Tooling',
+        meta: 'FYND × RELIANCE RETAIL · 2022–2023', tags: ['Test Automation', 'CI/CD', 'OMS', 'Quality Engineering'],
+        facts: [{ k: 'Role', v: 'Graduate SDE, OMS Team' }, { k: 'System', v: 'Automated regression suite, CI\'d via Azure Pipelines' }, { k: 'Coverage', v: '100+ test cases across shipment types, journeys, and failure points' }, { k: 'Recognition', v: 'Fynd Star Award — top performer, Fynd Commerce Platform (team of 50)' }],
+        metrics: [],
+        sections: [
+          { n: '01', title: 'The problem: every shipment type, every journey, every failure point', paras: ['A single feature change in OMS wasn\'t tested against one flow — it had to hold up across a combinatorial explosion of cases. Shipments could be single-item single-quantity, single-item multi-quantity, multi-item single-quantity, or multi-item multi-quantity. Each of those could move through cancellation, return, or RTO. And at nearly every step — delivery-partner assignment, payment failure, Store OS pickup — the journey could branch again.', 'Before automation, QA manually walked through this matrix for every release, however small. A minor feature change still meant re-testing dozens of shipment-journey-failure combinations by hand, which made even routine releases slow and made it easy for edge cases to slip through.'] },
+          { n: '02', title: 'What I built', paras: ['As a Graduate SDE, I built an automated regression suite covering 100+ test cases across shipment types, order journeys, and failure scenarios, wired into Azure Pipelines so it ran automatically on every merge. Once a run completed, results posted directly to Slack — pass/fail for every case, with the specific shipment ID and order ID where anything failed.', 'QA\'s process changed as a result: manual QA didn\'t start until the automated run had signed off. Since the pipeline already covered the full combination space, QA\'s time shifted from re-verifying known cases to focusing on what automation couldn\'t catch.'] },
+          { n: '03', title: 'The debugging side-effect', paras: ['The Slack alerts did more than flag pass/fail — they pinpointed exactly which step in which journey broke, tied to a real shipment and order ID. That meant a developer could go straight to the logs for that specific ID instead of trying to reproduce a failure from a vague QA report. Debugging time dropped because the pipeline had already done the work of isolating where in the state machine things went wrong.'] },
+          { n: '04', title: 'Why this felt like product work', paras: ['Designing the 100+ case test matrix meant deciding which edge cases actually mattered — which combinations of shipment type, journey, and failure point were worth covering, and which were noise. That\'s a prioritization exercise, not just a testing one. Working through it with QA and developers, figuring out what to automate versus what still needed human judgment, was my first real exposure to thinking like a PM — before I even had an SDE-1 title.'] },
+          { n: '05', title: 'Impact', paras: ['The pipeline cut manual QA effort by 40% and made release sign-off faster and more reliable across the board. It was recognized with the Fynd Star Award — an annual award given by the Engineering Manager to the top-performing member of the Fynd Commerce Platform team, out of a team of 50, awarded to me while still a Graduate SDE.'] }
         ]
       },
       {
