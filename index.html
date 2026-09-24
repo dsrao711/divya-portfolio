@@ -260,10 +260,17 @@ a:hover{color:var(--amber-deep)}
 </sc-if>
 </div>
 <div style="background:var(--paper-sunk);border-left:1px solid var(--line);padding:30px;display:flex;flex-direction:column;gap:16px">
+<sc-if value="{{ p.hasImg }}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;min-height:180px;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line)">
+<img src="{{ p.img }}" alt="{{ p.imgAlt }}" style="width:100%;height:100%;object-fit:cover;display:block" />
+</div>
+</sc-if>
+<sc-if value="{{ p.noImg }}" hint-placeholder-val="{{ true }}">
 <div style="flex:1;min-height:180px;border:1px dashed var(--line-strong);border-radius:var(--r-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--paper-raised)">
 <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">Product screenshot</span>
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — send me the image</span>
 </div>
+</sc-if>
 <sc-if value="{{ p.hasStack }}" hint-placeholder-val="{{ true }}">
 <div>
 <div class="overline" style="margin-bottom:8px">Stack</div>
@@ -747,9 +754,9 @@ class Component extends DCLogic {
       salesPoints: ['Ran early SaaS conversations with brands and agencies', 'Sat in pricing discussions instead of receiving the outcome', 'Handled objections and learned which ones were product gaps', 'Translated repeated sales feedback into roadmap items', 'Learned how the buying decision actually gets made', 'Built the reporting that closed the trust gap'],
       programPoints: ['Coordinated delivery across teams with separate backlogs', 'Mapped dependencies before they became blockers', 'Managed stakeholders across a large retail organisation', 'Held timelines through scope pressure', 'Owned programme-level execution, not just my tickets', 'Learned what slows shipping at enterprise scale'],
       projects: [
-        { name: 'Closet Builder', status: 'Personal project', problem: 'Wardrobe planning and purchase decisions happen separately — you don\'t know whether a new item actually earns a place next to what you already own.', built: 'An AI wardrobe planner: photograph your clothes, get auto-generated weekly outfits, and a \'buy or skip\' check that scores new purchases against your existing wardrobe before you buy.', role: 'Product · Engineering', github: 'https://github.com/dsrao711/closet-app', stack: [] },
-        { name: 'Product Analytics Dashboard for LehLah', status: 'Internal tool', problem: 'LehLah\'s product metrics lived in manual reports pulled on request — no self-serve way to see onboarding, activation or retention as they happened.', built: 'A self-serve analytics dashboard on MySQL + AWS tracking onboarding, activation and cohort retention in real time, replacing manual reporting.', role: 'Product · Engineering', note: 'Built on top of LehLah\'s own database, so the repo isn\'t shareable — a screen recording is coming soon.', stack: ['MySQL', 'AWS'] }
-      ].map(p => Object.assign({}, p, { hasGithub: !!p.github, hasNote: !!p.note, hasStack: !!(p.stack && p.stack.length) })),
+        { name: 'Closet Builder', status: 'Personal project', problem: 'Wardrobe planning and purchase decisions happen separately — you don\'t know whether a new item actually earns a place next to what you already own.', built: 'An AI wardrobe planner: photograph your clothes, get auto-generated weekly outfits, and a \'buy or skip\' check that scores new purchases against your existing wardrobe before you buy.', role: 'Product · Engineering', github: 'https://github.com/dsrao711/closet-app', img: 'images/projects/closet-builder.png', imgAlt: 'Closet Builder flow: upload your clothes, get AI-generated weekly outfits, and a buy-or-skip match score for a new purchase against your existing wardrobe.', stack: [] },
+        { name: 'Product Analytics Dashboard for LehLah', status: 'Internal tool', problem: 'LehLah\'s product metrics lived in manual reports pulled on request — no self-serve way to see onboarding, activation or retention as they happened.', built: 'A self-serve analytics dashboard on MySQL + AWS tracking onboarding, activation and cohort retention in real time, replacing manual reporting.', role: 'Product · Engineering', note: 'Built on top of LehLah\'s own database, so the repo isn\'t shareable — a screen recording is coming soon.', img: 'images/projects/lehlah-analytics-dashboard.png', imgAlt: 'LehLah analytics dashboard showing signups, onboarding funnel, feature retention and cohort retention, built on MySQL and AWS.', stack: ['MySQL', 'AWS'] }
+      ].map(p => Object.assign({}, p, { hasGithub: !!p.github, hasNote: !!p.note, hasStack: !!(p.stack && p.stack.length), hasImg: !!p.img, noImg: !p.img })),
       ladder: [
         { title: 'CODE', q: 'How do we build it?' },
         { title: 'PRODUCT', q: 'What should we build?' },
