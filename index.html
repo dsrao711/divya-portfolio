@@ -32,12 +32,10 @@ a:hover{color:var(--amber-deep)}
 <nav style="display:flex;align-items:center;gap:2px;flex-wrap:wrap">
 <button onClick="{{ goWork }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">Work</button>
 <button onClick="{{ goImpact }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">Engineering</button>
-<button onClick="{{ goWriting }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">Writing</button>
-<button onClick="{{ goLab }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">Lab</button>
 <button onClick="{{ goProjects }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">Projects</button>
 <button onClick="{{ goAbout }}" style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-soft);background:none;border:0;padding:8px 12px;border-radius:var(--r-sm);cursor:pointer;transition:color var(--dur) var(--ease),background var(--dur) var(--ease)" style-hover="color:var(--ink);background:var(--amber-wash)">About</button>
 <span style="width:1px;height:20px;background:var(--line);margin:0 8px"></span>
-<a href="#resume" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line-strong);padding:8px 12px;border-radius:var(--r-sm);transition:all var(--dur) var(--ease)" style-hover="color:var(--ink);border-color:var(--ink-ghost);background:var(--paper-pure)">Resume ↗</a>
+<a href="https://docs.google.com/document/d/1dIUvghjwl3_uQzCLZRgr0ND8jpx2DRUcdcPipu2itkU/edit?usp=sharing" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line-strong);padding:8px 12px;border-radius:var(--r-sm);transition:all var(--dur) var(--ease)" style-hover="color:var(--ink);border-color:var(--ink-ghost);background:var(--paper-pure)">Resume ↗</a>
 </nav>
 </div>
 </header>
@@ -60,7 +58,7 @@ a:hover{color:var(--amber-deep)}
 <a href="#engineering" class="sd-btn sd-btn--secondary sd-btn--lg">Explore my Engineering Work →</a>
 </div>
 <div style="margin-top:20px">
-<a href="#resume" style="font-family:var(--sans);font-size:13.5px;color:var(--ink-faint);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px" style-hover="color:var(--ink)">Download Resume ↓</a>
+<a href="https://docs.google.com/document/d/1dIUvghjwl3_uQzCLZRgr0ND8jpx2DRUcdcPipu2itkU/edit?usp=sharing" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:13.5px;color:var(--ink-faint);text-decoration:underline;text-decoration-color:var(--line-strong);text-underline-offset:4px" style-hover="color:var(--ink)">View Resume ↗</a>
 </div>
 </div>
 
@@ -178,7 +176,7 @@ a:hover{color:var(--amber-deep)}
 <span class="body-sm" style="color:var(--ink-faint)">Not everything needs a full case study.</span>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px, 100%), 1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden">
-<sc-for list="{{ archive }}" as="f" hint-placeholder-count="12">
+<sc-for list="{{ archive }}" as="f" hint-placeholder-count="11">
 <div style="background:var(--paper-raised);padding:22px 20px;display:flex;flex-direction:column;gap:10px;min-height:172px;transition:background var(--dur) var(--ease)" style-hover="background:var(--paper-pure)">
 <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
 <span class="h4" style="margin:0">{{ f.name }}</span>
@@ -233,7 +231,7 @@ a:hover{color:var(--amber-deep)}
 <span class="overline">05 / Outside work</span>
 <h2 class="display-l" style="margin:12px 0 40px">Things I've Built Outside Work</h2>
 <div style="display:flex;flex-direction:column;gap:20px">
-<sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+<sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
 <article class="sd-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px, 100%), 1fr))">
 <div style="padding:30px;display:flex;flex-direction:column;gap:18px">
 <div style="display:flex;align-items:baseline;gap:12px">
@@ -252,67 +250,30 @@ a:hover{color:var(--amber-deep)}
 <div class="overline" style="margin-bottom:6px">My role</div>
 <p class="body" style="margin:0;color:var(--ink)">{{ p.role }}</p>
 </div>
+<sc-if value="{{ p.hasGithub }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
-<a href="#project" class="sd-btn sd-btn--secondary sd-btn--sm">View Product ↗</a>
-<a href="#github" class="sd-btn sd-btn--ghost sd-btn--sm">GitHub ↗</a>
-<a href="#store" class="sd-btn sd-btn--ghost sd-btn--sm">{{ p.store }}</a>
+<a href="{{ p.github }}" target="_blank" rel="noopener" class="sd-btn sd-btn--ghost sd-btn--sm">GitHub ↗</a>
 </div>
+</sc-if>
+<sc-if value="{{ p.hasNote }}" hint-placeholder-val="{{ false }}">
+<p class="body-sm" style="margin:4px 0 0;color:var(--ink-ghost)">{{ p.note }}</p>
+</sc-if>
 </div>
 <div style="background:var(--paper-sunk);border-left:1px solid var(--line);padding:30px;display:flex;flex-direction:column;gap:16px">
 <div style="flex:1;min-height:180px;border:1px dashed var(--line-strong);border-radius:var(--r-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:var(--paper-raised)">
 <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">Product screenshot</span>
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — send me the image</span>
 </div>
+<sc-if value="{{ p.hasStack }}" hint-placeholder-val="{{ true }}">
 <div>
 <div class="overline" style="margin-bottom:8px">Stack</div>
 <div style="display:flex;flex-wrap:wrap;gap:8px">
 <sc-for list="{{ p.stack }}" as="s" hint-placeholder-count="4"><span class="sd-tag" style="background:var(--paper-raised);color:var(--ink-soft)">{{ s }}</span></sc-for>
 </div>
 </div>
+</sc-if>
 </div>
 </article>
-</sc-for>
-</div>
-</section>
-
-<section id="writing" style="max-width:1200px;margin:0 auto;padding:88px 24px;border-bottom:1px solid var(--line);scroll-margin-top:80px">
-<div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px;margin-bottom:12px">
-<div>
-<span class="overline">06 / Writing</span>
-<h2 class="display-l" style="margin:12px 0 0">Field Notes</h2>
-</div>
-<button onClick="{{ goWriting }}" class="sd-btn sd-btn--secondary sd-btn--sm">All field notes →</button>
-</div>
-<p class="body" style="margin:0 0 36px;max-width:52ch">Longer pieces about things I learned by doing the work, not by reading about it.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px, 100%), 1fr));gap:20px">
-<sc-for list="{{ notesPreview }}" as="n" hint-placeholder-count="3">
-<button onClick="{{ n.onClick }}" class="sd-card" style="text-align:left;cursor:pointer;padding:24px;display:flex;flex-direction:column;gap:12px;min-height:220px;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)" style-hover="box-shadow:var(--shadow-md);transform:translateY(-2px)">
-<span style="display:flex;align-items:center;gap:10px"><span class="sd-tag">{{ n.category }}</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-ghost)">{{ n.date }}</span></span>
-<span class="h3" style="margin:0">{{ n.title }}</span>
-<span class="body-sm" style="flex:1">{{ n.blurb }}</span>
-<span style="display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink-faint)"><span>{{ n.readingTime }}</span><span style="color:var(--amber-deep)">Read →</span></span>
-</button>
-</sc-for>
-</div>
-</section>
-
-<section id="lab" style="max-width:1200px;margin:0 auto;padding:88px 24px;border-bottom:1px solid var(--line);scroll-margin-top:80px">
-<span class="overline">07 / Opinions</span>
-<h2 class="display-l" style="margin:12px 0 10px">Product Lab</h2>
-<p class="body-lg" style="margin:0 0 28px;max-width:48ch">Hypotheses, teardowns and things I can't stop thinking about.</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
-<sc-for list="{{ labFilters }}" as="f" hint-placeholder-count="6">
-<button onClick="{{ f.onClick }}" class="{{ f.cls }}" style="cursor:pointer">{{ f.label }}</button>
-</sc-for>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px, 100%), 1fr));gap:16px">
-<sc-for list="{{ labVisible }}" as="l" hint-placeholder-count="6">
-<div class="sd-card" style="padding:22px;display:flex;flex-direction:column;gap:12px;min-height:190px;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)" style-hover="border-color:var(--line-strong);box-shadow:var(--shadow-sm)">
-<span class="overline" style="color:var(--amber-deep)">{{ l.category }}</span>
-<span class="h3" style="margin:0">{{ l.title }}</span>
-<span class="body-sm" style="flex:1">{{ l.blurb }}</span>
-<a href="#linkedin" style="font-family:var(--mono);font-size:11px;letter-spacing:0.04em;color:var(--ink-faint)" style-hover="color:var(--amber-deep)">{{ l.link }}</a>
-</div>
 </sc-for>
 </div>
 </section>
@@ -320,7 +281,7 @@ a:hover{color:var(--amber-deep)}
 <section id="about" style="max-width:1200px;margin:0 auto;padding:88px 24px;scroll-margin-top:80px">
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%), 1fr));gap:64px">
 <div>
-<span class="overline">08 / About</span>
+<span class="overline">06 / About</span>
 <h2 class="display-l" style="margin:12px 0 28px">About</h2>
 <div style="display:flex;flex-direction:column;gap:18px;max-width:56ch">
 <p class="body-lg" style="margin:0">I started my career in software engineering because I wanted to understand how technology gets built.</p>
@@ -522,56 +483,6 @@ a:hover{color:var(--amber-deep)}
 </main>
 </sc-if>
 
-<sc-if value="{{ isWriting }}" hint-placeholder-val="{{ false }}">
-<main style="max-width:1200px;margin:0 auto;padding:48px 24px 96px">
-<button onClick="{{ goHome }}" class="sd-btn sd-btn--ghost sd-btn--sm" style="margin-bottom:36px">← Home</button>
-<span class="overline">Writing</span>
-<h1 class="display-xl" style="margin:14px 0 14px;font-size:clamp(44px,6vw,80px)">Field Notes</h1>
-<p class="body-lg" style="margin:0 0 32px;max-width:54ch">Learnings from work I actually did. Separate from <button onClick="{{ goLab }}" style="background:none;border:0;padding:0;font:inherit;color:var(--amber);cursor:pointer;text-decoration:underline;text-underline-offset:3px">Product Lab</button>, which is opinions about other people's products.</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px">
-<sc-for list="{{ noteFilters }}" as="f" hint-placeholder-count="5">
-<button onClick="{{ f.onClick }}" class="{{ f.cls }}" style="cursor:pointer">{{ f.label }}</button>
-</sc-for>
-</div>
-<div style="border-top:1px solid var(--line)">
-<sc-for list="{{ notesVisible }}" as="n" hint-placeholder-count="6">
-<button onClick="{{ n.onClick }}" style="width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:26px 8px;cursor:pointer;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px, 100%), 1fr));gap:20px;align-items:baseline;transition:background var(--dur) var(--ease)" style-hover="background:var(--paper-raised)">
-<span>
-<span style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span class="sd-tag">{{ n.category }}</span><span style="font-family:var(--mono);font-size:10.5px;color:var(--ink-ghost)">{{ n.date }} · {{ n.readingTime }}</span></span>
-<span class="h2" style="display:block">{{ n.title }}</span>
-</span>
-<span class="body" style="color:var(--ink-soft)">{{ n.blurb }}</span>
-<span style="font-family:var(--mono);font-size:11px;color:var(--amber-deep);text-align:right">Read →</span>
-</button>
-</sc-for>
-</div>
-</main>
-</sc-if>
-
-<sc-if value="{{ isArticle }}" hint-placeholder-val="{{ false }}">
-<main style="max-width:1200px;margin:0 auto;padding:48px 24px 96px">
-<button onClick="{{ goWriting }}" class="sd-btn sd-btn--ghost sd-btn--sm" style="margin-bottom:36px">← Field Notes</button>
-<div style="max-width:68ch">
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:18px"><span class="sd-tag">{{ note.category }}</span><span style="font-family:var(--mono);font-size:11px;color:var(--ink-faint)">{{ note.date }} · {{ note.readingTime }}</span></div>
-<h1 class="display-l" style="margin:0 0 20px">{{ note.title }}</h1>
-<p class="body-lg" style="margin:0 0 36px;font-size:20px;color:var(--ink);padding-bottom:36px;border-bottom:1px solid var(--line)">{{ note.blurb }}</p>
-<div style="display:flex;flex-direction:column;gap:22px">
-<sc-for list="{{ note.body }}" as="block" hint-placeholder-count="5">
-<div>
-<sc-if value="{{ block.isHeading }}" hint-placeholder-val="{{ false }}"><h2 class="h2" style="margin:14px 0 0">{{ block.text }}</h2></sc-if>
-<sc-if value="{{ block.isPara }}" hint-placeholder-val="{{ true }}"><p class="body-lg" style="margin:0;font-size:17px">{{ block.text }}</p></sc-if>
-<sc-if value="{{ block.isQuote }}" hint-placeholder-val="{{ false }}"><p class="quote" style="font-size:26px;margin:8px 0;padding-left:20px;border-left:2px solid var(--amber)">{{ block.text }}</p></sc-if>
-</div>
-</sc-for>
-</div>
-<div class="sd-card" style="margin-top:44px;padding:24px;background:var(--paper-sunk);box-shadow:none">
-<span class="overline">Placeholder article</span>
-<p class="body-sm" style="margin:8px 0 0">Template only — the real piece goes here. Structure supports headings, pull-quotes and long-form paragraphs.</p>
-</div>
-</div>
-</main>
-</sc-if>
-
 <footer id="resume" style="border-top:1px solid var(--line);background:var(--paper-sunk);scroll-margin-top:80px">
 <div style="max-width:1200px;margin:0 auto;padding:56px 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px, 100%), 1fr));gap:40px;align-items:start">
 <div>
@@ -584,8 +495,9 @@ a:hover{color:var(--amber-deep)}
 <div style="display:flex;flex-wrap:wrap;gap:24px">
 <a href="#linkedin" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">LinkedIn ↗</a>
 <a href="#github" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">GitHub ↗</a>
-<a href="#email" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">Email ↗</a>
-<a href="#resume-pdf" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">Resume ↓</a>
+<a href="mailto:divyarao0712@gmail.com" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">Email ↗</a>
+<a href="tel:+919987907159" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">Phone ↗</a>
+<a href="https://docs.google.com/document/d/1dIUvghjwl3_uQzCLZRgr0ND8jpx2DRUcdcPipu2itkU/edit?usp=sharing" target="_blank" rel="noopener" style="font-family:var(--sans);font-size:14px;color:var(--ink-soft)" style-hover="color:var(--amber-deep)">Resume ↗</a>
 </div>
 <p class="body-sm" style="margin:0;color:var(--ink-faint);max-width:34ch">Built with curiosity, systems thinking and an unreasonable number of product notes.</p>
 </div>
@@ -595,7 +507,7 @@ a:hover{color:var(--amber-deep)}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Theme&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;#C25E2A&quot;,&quot;#6E2433&quot;,&quot;#3B5B52&quot;,&quot;#1B1712&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { page: 'home', slug: 'campaign-report', note: 0, labFilter: 'All', noteFilter: 'All' };
+  state = { page: 'home', slug: 'campaign-report' };
 
   constructor(p) { super(p); this.rootRef = React.createRef(); }
   componentDidMount() { this.applyTheme(); this.watchVideos(); }
@@ -774,30 +686,6 @@ class Component extends DCLogic {
     ];
   }
 
-  notesData() {
-    return [
-      { title: 'What two years of engineering changed about the way I write PRDs', category: 'Craft', date: 'Jul 2026', readingTime: '7 min read', blurb: 'Writing specs for people whose job I used to do changed what I put in them — and what I leave out.' },
-      { title: 'What working with founders taught me about prioritisation', category: 'Startups', date: 'Jun 2026', readingTime: '6 min read', blurb: 'Founder-led prioritisation looks chaotic from the outside. It is usually a much shorter argument about the same thing.' },
-      { title: 'What I misunderstood about activation', category: 'Growth', date: 'May 2026', readingTime: '8 min read', blurb: 'I optimised the steps I could see before I understood which users were never going to take them.' },
-      { title: 'What selling SaaS taught me about building SaaS', category: 'Business', date: 'Apr 2026', readingTime: '9 min read', blurb: 'Objections in a sales call are a backlog with a confidence interval attached.' },
-      { title: 'Shipping inside a large company vs. a startup', category: 'Craft', date: 'Mar 2026', readingTime: '6 min read', blurb: 'Same verb, completely different bottleneck. One is coordination cost, the other is conviction cost.' },
-      { title: 'When data should not decide the roadmap', category: 'Growth', date: 'Feb 2026', readingTime: '5 min read', blurb: 'Data is excellent at telling you what happened to the product you already built.' }
-    ];
-  }
-
-  labData() {
-    return [
-      { title: 'Three things I\'d change about a quick-commerce app', category: 'Teardowns', blurb: 'Placeholder teardown: where the basket flow leaks and what I\'d test first.', link: 'Read on LinkedIn ↗' },
-      { title: 'Why one streaming feature works better than it should', category: 'Teardowns', blurb: 'Placeholder: a small feature carrying a disproportionate amount of retention.', link: 'Read on LinkedIn ↗' },
-      { title: 'If I were PM for a creator marketplace', category: 'Marketplace', blurb: 'Placeholder: supply liquidity before demand polish, and how I\'d sequence it.', link: 'Read →' },
-      { title: 'How I think this company actually makes money', category: 'Business Models', blurb: 'Placeholder: unbundling the revenue line from the marketing story.', link: 'Read on LinkedIn ↗' },
-      { title: 'AI features that are actually products', category: 'AI', blurb: 'Placeholder: the difference between a model in the loop and a job being done.', link: 'Read →' },
-      { title: 'Onboarding patterns I keep stealing', category: 'Growth', blurb: 'Placeholder: a running collection of first-run flows worth copying.', link: 'Read on LinkedIn ↗' },
-      { title: 'Incentives are the real product in creator commerce', category: 'Marketplace', blurb: 'Placeholder: what rewards changed about creator behaviour, and what they didn\'t.', link: 'Read →' },
-      { title: 'Pricing is a product decision, not a finance one', category: 'Business Models', blurb: 'Placeholder: packaging as the clearest statement of what you think you\'re worth.', link: 'Read →' }
-    ];
-  }
-
   renderVals() {
     const st = this.state;
     const all = this.studyData().map(s => Object.assign({}, s, { onClick: () => this.go('case', { slug: s.slug }), cardLabel: s.cardLabel || s.highlightLabel }));
@@ -831,35 +719,15 @@ class Component extends DCLogic {
       }))
     });
 
-    const notesAll = this.notesData().map((n, i) => Object.assign({}, n, { onClick: () => this.go('article', { note: i }) }));
-    const noteCats = ['All'].concat(Array.from(new Set(notesAll.map(n => n.category))));
-    const lab = this.labData();
-    const labCats = ['All', 'Teardowns', 'AI', 'Growth', 'Marketplace', 'Business Models'];
-    const chip = (active) => 'sd-chip' + (active ? ' sd-chip--active' : '');
-    const rawNote = notesAll[st.note] || notesAll[0];
-    const note = Object.assign({}, rawNote, {
-      body: [
-        { text: 'Placeholder opening paragraph. This template is the shape of a Field Note: a claim in the first line, the situation that produced it, then what actually happened.', isPara: true },
-        { text: 'The context', isHeading: true },
-        { text: 'Placeholder — the specific project, constraint or moment this note came from. Field Notes are grounded in work that was actually shipped, so this section names the thing.', isPara: true },
-        { text: 'Placeholder pull-quote — the one line worth remembering from this piece.', isQuote: true },
-        { text: 'What changed', isHeading: true },
-        { text: 'Placeholder — what you do differently now, stated concretely enough that someone could copy it.', isPara: true },
-        { text: 'Placeholder closing paragraph.', isPara: true }
-      ]
-    });
-
     return {
       rootRef: this.rootRef,
-      isHome: st.page === 'home', isCase: st.page === 'case', isWriting: st.page === 'writing', isArticle: st.page === 'article',
+      isHome: st.page === 'home', isCase: st.page === 'case',
       goHome: () => this.go('home'),
       goWork: () => { if (st.page !== 'home') { this.go('home'); setTimeout(() => this.jump('work'), 60); } else this.jump('work'); },
       goImpact: () => { if (st.page !== 'home') { this.go('home'); setTimeout(() => this.jump('engineering'), 60); } else this.jump('engineering'); },
       goProjects: () => { if (st.page !== 'home') { this.go('home'); setTimeout(() => this.jump('projects'), 60); } else this.jump('projects'); },
       goAbout: () => { if (st.page !== 'home') { this.go('home'); setTimeout(() => this.jump('about'), 60); } else this.jump('about'); },
-      goLab: () => { if (st.page !== 'home') { this.go('home'); setTimeout(() => this.jump('lab'), 60); } else this.jump('lab'); },
-      goWriting: () => this.go('writing'),
-      studies, engStudies, cs, note,
+      studies, engStudies, cs,
       nextCase: () => this.go('case', { slug: next.slug }),
       nextCaseLabel: 'Next: ' + next.title,
       archive: [
@@ -874,21 +742,14 @@ class Component extends DCLogic {
         { name: 'Luna', year: '2026', problem: 'The brand side needed its own product, not a tab.', role: 'PM · B2B SaaS', impact: 'SaaS foundation' },
         { name: 'Subscription & Payments', year: '2026', problem: 'Selling SaaS needs plans, trials, credits and invoices.', role: 'PM · Razorpay', impact: 'Revenue infra' },
         { name: 'Affiliate Tracking', year: '2025', problem: 'Attribution is the product in creator commerce.', role: 'PM · Systems', impact: 'Trust layer' },
-        { name: 'YouTube / Instagram integrations', year: '2025', problem: 'Creators live on more than one platform.', role: 'PM · Integrations', impact: 'Coverage' },
-        { name: 'Sourcing & Whitelisting', year: '2025', problem: 'Supply quality decides marketplace credibility.', role: 'PM · Ops workflow', impact: 'Placeholder' }
+        { name: 'YouTube / Instagram integrations', year: '2025', problem: 'Creators live on more than one platform.', role: 'PM · Integrations', impact: 'Coverage' }
       ],
       salesPoints: ['Ran early SaaS conversations with brands and agencies', 'Sat in pricing discussions instead of receiving the outcome', 'Handled objections and learned which ones were product gaps', 'Translated repeated sales feedback into roadmap items', 'Learned how the buying decision actually gets made', 'Built the reporting that closed the trust gap'],
       programPoints: ['Coordinated delivery across teams with separate backlogs', 'Mapped dependencies before they became blockers', 'Managed stakeholders across a large retail organisation', 'Held timelines through scope pressure', 'Owned programme-level execution, not just my tickets', 'Learned what slows shipping at enterprise scale'],
       projects: [
-        { name: 'Project One', status: 'Placeholder', problem: 'Placeholder — the specific frustration that made you start building this.', built: 'Placeholder — what shipped, in one or two sentences.', role: 'Product · UX · Engineering', store: 'App Store ↗', stack: ['React', 'Node', 'Postgres', 'Vercel'] },
-        { name: 'Project Two', status: 'Placeholder', problem: 'Placeholder — the problem statement.', built: 'Placeholder — what you built and for whom.', role: 'Product · Engineering', store: 'Play Store ↗', stack: ['Next.js', 'TypeScript', 'Supabase'] },
-        { name: 'Project Three', status: 'Placeholder', problem: 'Placeholder — the product insight behind it.', built: 'Placeholder — the version that actually got used.', role: 'Product · UX', store: 'Live site ↗', stack: ['React Native', 'Firebase'] }
-      ],
-      notesPreview: notesAll.slice(0, 3),
-      notesVisible: st.noteFilter === 'All' ? notesAll : notesAll.filter(n => n.category === st.noteFilter),
-      noteFilters: noteCats.map(c => ({ label: c, cls: chip(st.noteFilter === c), onClick: () => this.setState({ noteFilter: c }) })),
-      labVisible: st.labFilter === 'All' ? lab : lab.filter(l => l.category === st.labFilter),
-      labFilters: labCats.map(c => ({ label: c, cls: chip(st.labFilter === c), onClick: () => this.setState({ labFilter: c }) })),
+        { name: 'Closet Builder', status: 'Personal project', problem: 'Wardrobe planning and purchase decisions happen separately — you don\'t know whether a new item actually earns a place next to what you already own.', built: 'An AI wardrobe planner: photograph your clothes, get auto-generated weekly outfits, and a \'buy or skip\' check that scores new purchases against your existing wardrobe before you buy.', role: 'Product · Engineering', github: 'https://github.com/dsrao711/closet-app', stack: [] },
+        { name: 'Product Analytics Dashboard for LehLah', status: 'Internal tool', problem: 'LehLah\'s product metrics lived in manual reports pulled on request — no self-serve way to see onboarding, activation or retention as they happened.', built: 'A self-serve analytics dashboard on MySQL + AWS tracking onboarding, activation and cohort retention in real time, replacing manual reporting.', role: 'Product · Engineering', note: 'Built on top of LehLah\'s own database, so the repo isn\'t shareable — a screen recording is coming soon.', stack: ['MySQL', 'AWS'] }
+      ].map(p => Object.assign({}, p, { hasGithub: !!p.github, hasNote: !!p.note, hasStack: !!(p.stack && p.stack.length) })),
       ladder: [
         { title: 'CODE', q: 'How do we build it?' },
         { title: 'PRODUCT', q: 'What should we build?' },
