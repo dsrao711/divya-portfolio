@@ -169,66 +169,8 @@ a:hover{color:var(--amber-deep)}
 </div>
 </section>
 
-<section style="max-width:1200px;margin:0 auto;padding:88px 24px;border-bottom:1px solid var(--line)">
-<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:32px">
-<span class="overline">03 / Archive</span>
-<h2 class="h1" style="margin:0">Other Things I've Shipped</h2>
-<span class="body-sm" style="color:var(--ink-faint)">Not everything needs a full case study.</span>
-</div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px, 100%), 1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden">
-<sc-for list="{{ archive }}" as="f" hint-placeholder-count="11">
-<div style="background:var(--paper-raised);padding:22px 20px;display:flex;flex-direction:column;gap:10px;min-height:172px;transition:background var(--dur) var(--ease)" style-hover="background:var(--paper-pure)">
-<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
-<span class="h4" style="margin:0">{{ f.name }}</span>
-<span style="font-family:var(--mono);font-size:10px;color:var(--ink-ghost)">{{ f.year }}</span>
-</div>
-<span class="body-sm" style="color:var(--ink-soft);flex:1">{{ f.problem }}</span>
-<span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint)">{{ f.role }}</span>
-<span style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px;border-top:1px solid var(--line)">
-<span class="body-sm" style="color:var(--ink);font-weight:600">{{ f.impact }}</span>
-<span style="font-size:12px;color:var(--amber-deep)">→</span>
-</span>
-</div>
-</sc-for>
-</div>
-</section>
-
-<section style="border-bottom:1px solid var(--line);background:var(--paper-sunk)">
-<div style="max-width:1200px;margin:0 auto;padding:88px 24px">
-<span class="overline">04 / Scope beyond the role</span>
-<h2 class="display-l" style="margin:12px 0 16px">Beyond the PRD</h2>
-<p class="body-lg" style="margin:0 0 44px;max-width:56ch">Some of my most valuable product context came from work that wasn't technically part of my job description.</p>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%), 1fr));gap:24px">
-<div class="sd-card" style="padding:32px;background:var(--paper-raised);box-shadow:none;display:flex;flex-direction:column;gap:20px">
-<div>
-<span class="overline" style="color:var(--amber-deep)">LehLah</span>
-<h3 class="h1" style="margin:10px 0 0">SaaS Sales</h3>
-</div>
-<p class="quote" style="font-size:22px;margin:0;padding-left:18px;border-left:2px solid var(--amber)">The best product context doesn't always arrive in Jira. Sometimes you have to go find it.</p>
-<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
-<sc-for list="{{ salesPoints }}" as="p" hint-placeholder-count="6">
-<li class="body" style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--mono);font-size:11px;color:var(--amber)">◦</span><span>{{ p }}</span></li>
-</sc-for>
-</ul>
-</div>
-<div class="sd-card" style="padding:32px;background:var(--paper-raised);box-shadow:none;display:flex;flex-direction:column;gap:20px">
-<div>
-<span class="overline">Fynd / Reliance Retail</span>
-<h3 class="h1" style="margin:10px 0 0">Program Management</h3>
-</div>
-<p class="body" style="margin:0">Shipping inside an enterprise ecosystem meant the hard part was rarely the code — it was sequencing the work across teams that didn't share a backlog.</p>
-<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
-<sc-for list="{{ programPoints }}" as="p" hint-placeholder-count="6">
-<li class="body" style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--mono);font-size:11px;color:var(--ink-ghost)">◦</span><span>{{ p }}</span></li>
-</sc-for>
-</ul>
-</div>
-</div>
-</div>
-</section>
-
 <section id="projects" style="max-width:1200px;margin:0 auto;padding:88px 24px;border-bottom:1px solid var(--line);scroll-margin-top:80px">
-<span class="overline">05 / Outside work</span>
+<span class="overline">03 / Outside work</span>
 <h2 class="display-l" style="margin:12px 0 40px">Things I've Built Outside Work</h2>
 <div style="display:flex;flex-direction:column;gap:20px">
 <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
@@ -281,6 +223,64 @@ a:hover{color:var(--amber-deep)}
 </sc-if>
 </div>
 </article>
+</sc-for>
+</div>
+</section>
+
+<section style="border-bottom:1px solid var(--line);background:var(--paper-sunk)">
+<div style="max-width:1200px;margin:0 auto;padding:88px 24px">
+<span class="overline">04 / Scope beyond the role</span>
+<h2 class="display-l" style="margin:12px 0 16px">Beyond the PRD</h2>
+<p class="body-lg" style="margin:0 0 44px;max-width:56ch">Some of my most valuable product context came from work that wasn't technically part of my job description.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px, 100%), 1fr));gap:24px">
+<div class="sd-card" style="padding:32px;background:var(--paper-raised);box-shadow:none;display:flex;flex-direction:column;gap:20px">
+<div>
+<span class="overline" style="color:var(--amber-deep)">LehLah</span>
+<h3 class="h1" style="margin:10px 0 0">SaaS Sales</h3>
+</div>
+<p class="quote" style="font-size:22px;margin:0;padding-left:18px;border-left:2px solid var(--amber)">The best product context doesn't always arrive in Jira. Sometimes you have to go find it.</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ salesPoints }}" as="p" hint-placeholder-count="6">
+<li class="body" style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--mono);font-size:11px;color:var(--amber)">◦</span><span>{{ p }}</span></li>
+</sc-for>
+</ul>
+</div>
+<div class="sd-card" style="padding:32px;background:var(--paper-raised);box-shadow:none;display:flex;flex-direction:column;gap:20px">
+<div>
+<span class="overline">Fynd / Reliance Retail</span>
+<h3 class="h1" style="margin:10px 0 0">Program Management</h3>
+</div>
+<p class="body" style="margin:0">Shipping inside an enterprise ecosystem meant the hard part was rarely the code — it was sequencing the work across teams that didn't share a backlog.</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ programPoints }}" as="p" hint-placeholder-count="6">
+<li class="body" style="display:flex;gap:10px;align-items:baseline"><span style="font-family:var(--mono);font-size:11px;color:var(--ink-ghost)">◦</span><span>{{ p }}</span></li>
+</sc-for>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:88px 24px;border-bottom:1px solid var(--line)">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:32px">
+<span class="overline">05 / Archive</span>
+<h2 class="h1" style="margin:0">Other Things I've Shipped</h2>
+<span class="body-sm" style="color:var(--ink-faint)">Not everything needs a full case study.</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px, 100%), 1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden">
+<sc-for list="{{ archive }}" as="f" hint-placeholder-count="11">
+<div style="background:var(--paper-raised);padding:22px 20px;display:flex;flex-direction:column;gap:10px;min-height:172px;transition:background var(--dur) var(--ease)" style-hover="background:var(--paper-pure)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+<span class="h4" style="margin:0">{{ f.name }}</span>
+<span style="font-family:var(--mono);font-size:10px;color:var(--ink-ghost)">{{ f.year }}</span>
+</div>
+<span class="body-sm" style="color:var(--ink-soft);flex:1">{{ f.problem }}</span>
+<span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-faint)">{{ f.role }}</span>
+<span style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px;border-top:1px solid var(--line)">
+<span class="body-sm" style="color:var(--ink);font-weight:600">{{ f.impact }}</span>
+<span style="font-size:12px;color:var(--amber-deep)">→</span>
+</span>
+</div>
 </sc-for>
 </div>
 </section>
