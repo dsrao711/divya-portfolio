@@ -540,7 +540,7 @@
                   >
                     <div
                       style="
-                        aspect-ratio: 4/3;
+                        min-height: 200px;
                         background: var(--paper-raised);
                         border-bottom: 1px solid var(--line);
                         overflow: hidden;
@@ -550,7 +550,7 @@
                       <img
                         src="{{ cs.creative }}"
                         alt="{{ cs.creativeAlt }}"
-                        style="width: 100%; height: 100%; object-fit: contain; display: block"
+                        style="width: 100%; height: auto; display: block"
                         onerror="
                           this.style.display = 'none';
                           this.nextElementSibling.style.display = 'flex';
