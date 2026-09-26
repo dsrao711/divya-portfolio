@@ -624,7 +624,7 @@
                       <span
                         style="
                           display: flex;
-                          align-items: baseline;
+                          align-items: flex-end;
                           justify-content: space-between;
                           gap: 10px;
                           margin-top: 6px;
@@ -632,17 +632,24 @@
                           border-top: 1px solid var(--line);
                         "
                       >
-                        <span
-                          style="
-                            display: block;
-                            font-family: var(--mono);
-                            font-weight: 700;
-                            font-size: 16px;
-                            color: var(--ink);
-                            letter-spacing: -0.01em;
-                          "
-                          >{{ cs.highlight }}</span
-                        >
+                        <span style="display: flex; flex-direction: column; gap: 2px">
+                          <span
+                            style="
+                              display: block;
+                              font-family: var(--mono);
+                              font-weight: 700;
+                              font-size: 16px;
+                              color: var(--ink);
+                              letter-spacing: -0.01em;
+                            "
+                            >{{ cs.highlight }}</span
+                          >
+                          <span
+                            class="body-sm"
+                            style="display: block; color: var(--ink-faint); font-size: 11px"
+                            >{{ cs.highlightLabel }}</span
+                          >
+                        </span>
                         <span
                           style="
                             font-family: var(--mono);
@@ -2169,7 +2176,7 @@
           kind: "product",
           subtitle: "Finding product-market fit between brands and the creators already selling for them",
           highlight: "13K+",
-          highlightLabel: "Monthly active creators driving organic sales",
+          highlightLabel: "Monetizing active creators",
           cardLabel: "Surfacing creators who already sell for a brand, for free",
           meta: "LEHLAH · 2025–PRESENT",
           tags: ["Product-Market Fit", "Creator Discovery", "B2B SaaS", "Attribution"],
