@@ -710,7 +710,7 @@
                     >
                       <div
                         style="
-                          min-height: 200px;
+                          aspect-ratio: 16 / 9;
                           background: var(--paper-raised);
                           border-bottom: 1px solid var(--line);
                           overflow: hidden;
@@ -720,7 +720,7 @@
                         <img
                           src="{{ cs.creative }}"
                           alt="{{ cs.creativeAlt }}"
-                          style="width: 100%; height: auto; display: block"
+                          style="width: 100%; height: 100%; object-fit: contain; display: block"
                           onerror="
                             this.style.display = 'none';
                             this.nextElementSibling.style.display = 'flex';
@@ -793,7 +793,7 @@
                         <span
                           style="
                             display: flex;
-                            align-items: baseline;
+                            align-items: flex-end;
                             justify-content: space-between;
                             gap: 10px;
                             margin-top: 6px;
@@ -801,17 +801,24 @@
                             border-top: 1px solid var(--line);
                           "
                         >
-                          <span
-                            style="
-                              display: block;
-                              font-family: var(--mono);
-                              font-weight: 700;
-                              font-size: 16px;
-                              color: var(--ink);
-                              letter-spacing: -0.01em;
-                            "
-                            >{{ cs.highlight }}</span
-                          >
+                          <span style="display: flex; flex-direction: column; gap: 2px">
+                            <span
+                              style="
+                                display: block;
+                                font-family: var(--mono);
+                                font-weight: 700;
+                                font-size: 16px;
+                                color: var(--ink);
+                                letter-spacing: -0.01em;
+                              "
+                              >{{ cs.highlight }}</span
+                            >
+                            <span
+                              class="body-sm"
+                              style="display: block; color: var(--ink-faint); font-size: 11px"
+                              >{{ cs.highlightLabel }}</span
+                            >
+                          </span>
                           <span
                             style="
                               font-family: var(--mono);
@@ -2265,8 +2272,8 @@
           years: "2022–2024",
           kind: "eng",
           subtitle: "One state-machine API instead of five forked order flows — built so Fynd Platform could onboard new business verticals without touching core code",
-          highlight: "6+ verticals",
-          highlightLabel: "Powered by one configurable engine",
+          highlight: "Used by 6+",
+          highlightLabel: "Reliance verticals",
           cardLabel: "Systems Design",
           heroImg: "images/diagrams/order-journey-engine.png",
           heroImgAlt: "Diagram of the configurable state engine: one core order journey with per-vertical delivery-partner rules — BOPIS skips the DP step, JioMart assigns DP after pack, Fynd assigns DP before pack, and Swadesh runs made-to-order.",
