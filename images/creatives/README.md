@@ -17,8 +17,8 @@ and it appears in the card automatically — no code changes needed.
 
 | Case study                              | Expected file                              | Status |
 |-------------------------------------------|-----------------------------------------------|--------|
-| Configurable Order Journey Engine        | `images/creatives/eng-catalogue.png`         | ⬜ needed |
-| OMS Regression Testing Automation        | `images/creatives/eng-oms-regression.png`    | ⬜ needed |
+| Configurable Order Journey Engine        | `images/creatives/eng-catalogue.png`         | ✅ live |
+| OMS Regression Testing Automation        | `images/creatives/eng-oms-regression.png`    | ✅ live |
 
 Until a file exists at that path, the card falls back to a dashed
 "Placeholder — send me the image" tile automatically (same pattern as the
