@@ -76,11 +76,12 @@
             style="
               max-width: 1200px;
               margin: 0 auto;
-              padding: 0 24px;
-              height: 64px;
+              padding: 12px 24px;
+              min-height: 64px;
               display: flex;
               align-items: center;
               justify-content: space-between;
+              flex-wrap: wrap;
               gap: 16px;
             "
           >
@@ -419,7 +420,13 @@
                     </div>
                   </div>
                   <hr class="sd-rule" style="margin-bottom: 24px" />
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 16px">
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+                      gap: 20px 16px;
+                    "
+                  >
                     <div>
                       <div
                         style="
@@ -1370,12 +1377,12 @@
                   border-radius: var(--r-lg);
                 "
               >
-                <div style="display: flex; justify-content: center">
+                <div style="display: flex; justify-content: center; min-width: 0">
                   <sc-if value="{{ cs.isPhoneDemo }}" hint-placeholder-val="{{ true }}">
                     <div
                       style="
                         width: 296px;
-                        flex: none;
+                        max-width: 100%;
                         background: var(--ink);
                         border-radius: 42px;
                         padding: 11px;
