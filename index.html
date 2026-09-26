@@ -123,9 +123,9 @@ a:hover{color:var(--amber-deep)}
 <h2 class="display-l" style="margin:0">Featured Product Work</h2>
 <p class="body-sm" style="margin:0;max-width:34ch;color:var(--ink-faint)">Written as product decision documents: problem, options, trade-offs, what shipped, what it moved.</p>
 </div>
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px, 100%), 1fr));gap:12px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px, 100%), 1fr));gap:16px;align-items:start">
 <sc-for list="{{ studies }}" as="cs" hint-placeholder-count="3">
-<button onClick="{{ cs.onClick }}" class="sd-card" style="text-align:left;cursor:pointer;padding:0;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)" style-hover="transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)">
+<button onClick="{{ cs.onClick }}" class="sd-card" style="text-align:left;cursor:pointer;padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)" style-hover="transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)">
 <div style="aspect-ratio:4/3;background:var(--paper-raised);border-bottom:1px solid var(--line);overflow:hidden;position:relative">
 <img src="{{ cs.creative }}" alt="{{ cs.creativeAlt }}" style="width:100%;height:100%;object-fit:contain;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
 <div style="display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--line-strong);background:var(--paper-raised)">
@@ -133,18 +133,16 @@ a:hover{color:var(--amber-deep)}
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — send me the image</span>
 </div>
 </div>
-<span style="padding:24px;display:flex;flex-direction:column;gap:12px;flex:1">
+<span style="padding:16px 18px;display:flex;flex-direction:column;gap:6px">
 <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
 <span class="overline" style="color:var(--ink-ghost)">Case Study {{ cs.num }}</span>
 <span style="font-family:var(--mono);font-size:10px;color:var(--ink-ghost)">{{ cs.years }}</span>
 </span>
-<span class="h1" style="display:block;margin:0;text-wrap:pretty">{{ cs.title }}</span>
-<span class="body-sm" style="color:var(--ink-soft);flex:1">{{ cs.subtitle }}</span>
-<span style="display:block;padding-top:14px;border-top:1px solid var(--line)">
-<span style="display:block;font-family:var(--mono);font-weight:700;font-size:20px;color:var(--ink);letter-spacing:-0.01em">{{ cs.highlight }}</span>
-<span class="body-sm" style="display:block;color:var(--ink-faint);font-size:12.5px">{{ cs.cardLabel }}</span>
+<span class="h3" style="display:block;margin:2px 0 0;text-wrap:pretty">{{ cs.title }}</span>
+<span style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:6px;padding-top:8px;border-top:1px solid var(--line)">
+<span style="display:block;font-family:var(--mono);font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.01em">{{ cs.highlight }}</span>
+<span style="font-family:var(--mono);font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:var(--amber-deep);white-space:nowrap">Read →</span>
 </span>
-<span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber-deep)">Read case study →</span>
 </span>
 </button>
 </sc-for>
