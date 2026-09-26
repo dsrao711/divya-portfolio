@@ -127,7 +127,7 @@ a:hover{color:var(--amber-deep)}
 <sc-for list="{{ studies }}" as="cs" hint-placeholder-count="3">
 <button onClick="{{ cs.onClick }}" class="sd-card" style="text-align:left;cursor:pointer;padding:0;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)" style-hover="transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)">
 <div style="aspect-ratio:4/3;background:var(--paper-raised);border-bottom:1px solid var(--line);overflow:hidden;position:relative">
-<img src="{{ cs.creative }}" alt="{{ cs.creativeAlt }}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+<img src="{{ cs.creative }}" alt="{{ cs.creativeAlt }}" style="width:100%;height:100%;object-fit:contain;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
 <div style="display:none;position:absolute;inset:0;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--line-strong);background:var(--paper-raised)">
 <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-ghost)">Case study creative</span>
 <span class="body-sm" style="color:var(--ink-ghost)">Placeholder — send me the image</span>
