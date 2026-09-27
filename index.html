@@ -3,6 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      // GitHub Pages SPA deep-linking, step 2 of 2 (see /404.html for step 1).
+      // A hard/refresh load of e.g. /divya-portfolio/paid-collab 404s on GH
+      // Pages, gets served 404.html's content instead, and that redirects
+      // here with the real path stashed in ?slug=. Before anything else
+      // runs, restore the clean URL (no reload) so the app boots straight
+      // into the right case study and the address bar stays shareable.
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var slug = params.get("slug");
+        if (slug) {
+          var base = location.pathname.replace(/\/$/, "") + "/";
+          history.replaceState(null, "", base + slug + location.hash);
+        }
+      })();
+    </script>
     <script src="./support.js"></script>
   </head>
   <body>
@@ -2482,15 +2498,19 @@
         // ---------------------------------------------------------------
         // Lifecycle
         // ---------------------------------------------------------------
-        state = { page: 'home', slug: 'campaign-report' };
-
         constructor(p) {
           super(p);
           this.rootRef = React.createRef();
+          this.state = this.stateFromLocation();
+          this.onPopState = () => this.setState(this.stateFromLocation());
         }
         componentDidMount() {
           this.applyTheme();
           this.watchVideos();
+          window.addEventListener('popstate', this.onPopState);
+        }
+        componentWillUnmount() {
+          window.removeEventListener('popstate', this.onPopState);
         }
         componentDidUpdate() {
           this.applyTheme();
@@ -2544,9 +2564,34 @@
         // ---------------------------------------------------------------
         // Navigation
         // ---------------------------------------------------------------
+        // Every case study's `slug` doubles as its own URL path segment
+        // (e.g. /paid-collab), so a case study can be linked to directly —
+        // useful for pointing a resume bullet straight at one. See
+        // /404.html for the GitHub Pages side of this.
+        basePath() {
+          const all = this.studyData();
+          const segments = window.location.pathname.split('/').filter(Boolean);
+          const last = segments[segments.length - 1];
+          const isSlug = all.some((s) => s.slug === last);
+          const baseSegments = isSlug ? segments.slice(0, -1) : segments;
+          return '/' + (baseSegments.length ? baseSegments.join('/') + '/' : '');
+        }
+
+        stateFromLocation() {
+          const all = this.studyData();
+          const segments = window.location.pathname.split('/').filter(Boolean);
+          const last = segments[segments.length - 1];
+          const match = all.find((s) => s.slug === last);
+          return match
+            ? { page: 'case', slug: match.slug }
+            : { page: 'home', slug: 'campaign-report' };
+        }
+
         go(page, extra) {
           this.setState(Object.assign({ page }, extra || {}));
           window.scrollTo(0, 0);
+          const url = page === 'case' && extra && extra.slug ? this.basePath() + extra.slug : this.basePath();
+          history.pushState(null, '', url);
         }
 
         jump(id) {

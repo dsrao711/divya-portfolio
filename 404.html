@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Divya Rao</title>
+    <script>
+      // GitHub Pages SPA deep-linking, step 1 of 2 (see index.html's <head>
+      // for step 2). GitHub Pages has no real server-side router: a direct
+      // load (or refresh) of a case study's own URL, e.g.
+      // /divya-portfolio/paid-collab, doesn't match a real file, so GH
+      // Pages serves this 404.html's content instead (while leaving the
+      // browser's URL untouched). This script reads that mismatched path,
+      // pulls out the case study slug if the last segment is one, and does
+      // a real redirect back to the site root with the slug stashed in a
+      // query param. index.html then restores the clean URL and boots
+      // straight into that case study.
+      //
+      // Keep this list in sync with the `slug` values in studyData()
+      // inside index.html.
+      var KNOWN_SLUGS = [
+        "paid-collab",
+        "campaign-report",
+        "brand-pmf",
+        "eng-catalogue",
+        "eng-oms-regression",
+      ];
+      var SITE_ROOT = "/divya-portfolio/";
+      var segments = location.pathname.split("/").filter(Boolean);
+      var last = segments[segments.length - 1];
+      var isSlug = KNOWN_SLUGS.indexOf(last) !== -1;
+      if (isSlug) {
+        var base = "/" + segments.slice(0, -1).join("/") + "/";
+        location.replace(base + "?slug=" + last + location.hash);
+      } else {
+        // Unknown path (typo, old link, etc.) -- go straight to the site
+        // root instead of trying to redirect to itself, which would just
+        // 404 again and loop.
+        location.replace(SITE_ROOT + location.hash);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
