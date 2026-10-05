@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Brand PMF — Divya Rao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #fafafa;
+        --ink: #17171a;
+        --ink-soft: #4a4a52;
+        --ink-faint: #85858f;
+        --line: #e4e1da;
+        --serif: "DM Serif Text", serif;
+        --mono: "IBM Plex Mono", monospace;
+        --sans: "IBM Plex Sans", sans-serif;
+        --amber: #482f1f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+
+      /* ---------- nav (shared with index) ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        background: color-mix(in srgb, var(--paper) 90%, transparent);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+        z-index: 20;
+      }
+      nav {
+        padding: 30px clamp(24px, 5vw, 64px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      nav .brand {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 28px;
+        text-decoration: none;
+      }
+      nav .links {
+        display: flex;
+        gap: 36px;
+        flex-wrap: wrap;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 20px;
+      }
+      nav .links a {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+      }
+      nav .links a:hover {
+        border-color: var(--amber);
+      }
+
+      /* ---------- page header ---------- */
+      .page-header {
+        padding: 64px clamp(24px, 5vw, 64px) 0;
+      }
+      .page-header .back {
+        font-family: var(--mono);
+        font-size: 13px;
+        text-decoration: none;
+        color: var(--ink-faint);
+        display: inline-block;
+        margin-bottom: 28px;
+      }
+      .page-header .back:hover {
+        color: var(--ink);
+      }
+      .title-box {
+        border: 1.5px solid var(--ink);
+        padding: 28px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .title-box h1 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: clamp(32px, 5vw, 44px);
+        margin: 0;
+      }
+      .title-box .role {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .hero-media {
+        max-width: 210px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        background: var(--line);
+      }
+      .hero-media video,
+      .hero-media img {
+        width: 100%;
+        display: block;
+      }
+      .overview-visual {
+        max-width: 260px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .overview-visual img {
+        width: 100%;
+        display: block;
+      }
+      .app-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .app-brand-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1.5px solid var(--ink);
+        flex: none;
+      }
+      .app-brand-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .app-brand-name {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 34px;
+      }
+      .wide-visual {
+        max-width: 900px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .wide-visual img {
+        width: 100%;
+        display: block;
+      }
+
+      /* ---------- info row (duration / context) ---------- */
+      .info-row {
+        padding: 28px clamp(24px, 5vw, 64px);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .info-box {
+        border: 1.5px solid var(--ink);
+        background: #747272;
+        color: #fff;
+        padding: 10px 16px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+      .info-box strong {
+        font-weight: 700;
+      }
+
+      /* ---------- tags ---------- */
+      .tags-block {
+        padding: 0 clamp(24px, 5vw, 64px) 56px;
+      }
+      .tags-block .label {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 12px;
+      }
+      .tag-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tag-box {
+        border: 1.5px solid var(--ink);
+        padding: 8px 14px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+
+      /* ---------- stat row ---------- */
+      .stats {
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      }
+      .stat {
+        padding: 32px clamp(24px, 5vw, 64px);
+        border-left: 1px solid var(--line);
+      }
+      .stat:first-child {
+        border-left: none;
+      }
+      .stat .v {
+        font-family: var(--mono);
+        font-weight: 700;
+        font-size: 30px;
+      }
+      .stat .l {
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 6px;
+      }
+
+      /* ---------- sections ---------- */
+      .section {
+        padding: 56px clamp(24px, 5vw, 64px);
+        border-bottom: 1px solid var(--line);
+      }
+      .section h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 32px;
+        margin: 0 0 20px;
+        display: inline-block;
+        border-bottom: 3px solid var(--amber);
+        padding-bottom: 4px;
+      }
+      .section .wordy {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        max-width: 95ch;
+      }
+      .section .wordy-block {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        max-width: 95ch;
+      }
+      .section .wordy-block p {
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        margin: 0 0 20px;
+      }
+      .section .wordy-block p:last-child {
+        margin-bottom: 0;
+      }
+      .section .wordy-block ol {
+        margin: 0 0 20px;
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+      .section .wordy-block ul {
+        list-style: none;
+        margin: 0 0 20px;
+        padding: 0;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .section .wordy-block li {
+        margin-bottom: 8px;
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 22px;
+        color: var(--ink);
+        margin: 0 0 18px;
+        max-width: 95ch;
+      }
+      .pull-quote {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 24px;
+        color: var(--ink);
+        margin: 22px 0;
+        padding-left: 22px;
+        border-left: 3px solid var(--ink);
+        max-width: 90ch;
+      }
+      .highlight {
+        text-decoration: underline;
+        text-decoration-color: var(--amber);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      /* ---------- up next ---------- */
+      .up-next {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 64px clamp(24px, 5vw, 64px) 80px;
+      }
+      .up-next .label {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 20px;
+      }
+      .up-next-card {
+        max-width: 1000px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        transition: transform 0.15s ease;
+      }
+      .up-next:hover .up-next-card {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+      @media (max-width: 640px) {
+        .up-next-card {
+          grid-template-columns: 1fr;
+        }
+      }
+      .up-next-card .text {
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .up-next-card .text h3 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 34px;
+        margin: 0 0 10px;
+      }
+      .up-next-card .text .role {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .up-next-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-left: 1.5px solid var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="brand" href="index.html">divya rao</a>
+        <div class="links">
+          <a href="index.html#work">work</a>
+          <a href="index.html#skills">skills</a>
+          <a href="index.html#about">about</a>
+          <a href="index.html#contact">contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <a class="back" href="index.html#work">← back to work</a>
+      <div class="title-box">
+        <h1>Finding Product-Market Fit Between Brands and the Creators Already Selling for Them</h1>
+        <span class="role">Creator Discovery / Product-Market Fit / B2B SaaS</span>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-box"><strong>ROLE: </strong>PM — Problem Framing to Launch</span>
+      <span class="info-box"><strong>BUYER: </strong>Brands (HUL, Marico, D2C)</span>
+      <span class="info-box"><strong>SURFACE: </strong>Brand Dashboard · Creator Discovery</span>
+      <span class="info-box"><strong>STATUS: </strong>Live, Driving Renewals</span>
+    </div>
+
+    <div class="tags-block">
+      <div class="label">Focus Areas</div>
+      <div class="tag-boxes">
+        <span class="tag-box">Product-Market Fit</span>
+        <span class="tag-box">Creator Discovery</span>
+        <span class="tag-box">B2B SaaS</span>
+        <span class="tag-box">Attribution</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Overview</h2>
+      <div class="app-brand">
+        <div class="app-brand-icon">
+          <img src="images/lehlah-logo.avif" alt="LehLah logo" />
+        </div>
+        <span class="app-brand-name">LehLah</span>
+      </div>
+      <div class="wordy-block">
+        <p>
+          LehLah has 13K+ monthly active creators across geographies generating real, attributed
+          sales through affiliate links — often for brands who have never run a single campaign
+          with us.
+          <span class="highlight"
+            >Brand PMF is the product that surfaces exactly which of those creators are already
+            selling for a given brand, for free, before any campaign ever gets briefed.</span
+          >
+        </p>
+      </div>
+      <div class="hero-media">
+        <video src="videos/brand-pmf-demo.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <p
+        style="
+          max-width: 900px;
+          margin: 12px auto 0;
+          padding: 0 clamp(24px, 5vw, 64px);
+          font-family: var(--mono);
+          font-size: 12.5px;
+          color: var(--ink-faint);
+          text-align: center;
+        "
+      >
+        The brand dashboard surfacing which LehLah creators already drive affiliate sales for
+        them, organically.
+      </p>
+      <div class="wordy-block" style="margin-top: 28px">
+        <ol>
+          <li>Brand opens Creator Discovery and sees which LehLah creators already sell for them.</li>
+          <li>Each creator comes with the organic sales they've already driven — not just a follower count.</li>
+          <li>One click to connect and launch a campaign with that same creator.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v">13K+</div>
+        <div class="l">Monthly active LehLah creators, across geographies</div>
+      </div>
+      <div class="stat">
+        <div class="v">Lakhs in sales</div>
+        <div class="l">Generated organically for brands before they knew it</div>
+      </div>
+      <div class="stat">
+        <div class="v">HUL · Marico</div>
+        <div class="l">Now run recurring campaigns off this signal</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Problem</h2>
+      <p class="tagline">A post full of views and engagement doesn't hand a brand any revenue.</p>
+      <div class="wordy-block">
+        <p>
+          Running an influencer campaign looks straightforward from the outside: find creators who
+          match the brand's aesthetic, brief them, get the content live. The hard part is what
+          happens after the content goes live —
+          <span class="highlight"
+            >brands care about revenue, and a post full of views and engagement doesn't hand them
+            any.</span
+          >
+        </p>
+        <p>
+          The honest fallback is to spend more: run the same content as paid ads to force a sale
+          out of it. That works, but it means the organic creator spend bought attention, not
+          revenue — the two budgets never talk to each other.
+        </p>
+        <ul>
+          <li><strong>Step 1:</strong> find creators matching the brand's aesthetic.</li>
+          <li><strong>Step 2:</strong> brief them, get content live.</li>
+          <li><strong>What brands actually want:</strong> proof the content sold something.</li>
+          <li><strong>The fallback:</strong> pay again, in ads, to manufacture the sale the organic post didn't prove.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Insight</h2>
+      <p class="tagline">We had the answer sitting in our own data and didn't know it yet.</p>
+      <div class="wordy-block">
+        <p>
+          LehLah has 13K+ monthly active creators across geographies making content and driving
+          real sales through affiliate links — for brands who had never run a single campaign with
+          us.
+        </p>
+        <p>
+          Take Mamaearth: a popular D2C brand that LehLah creators were very likely already
+          generating sales for, organically, through affiliate content
+          <span class="highlight">Mamaearth never briefed and never paid for.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Solution: LehLah SaaS Creator Discovery</h2>
+      <p class="tagline">It shows a brand exactly who's already selling for them.</p>
+      <div class="wordy-block">
+        <p>
+          LehLah SaaS bridges that gap. It shows a brand exactly which LehLah creators are already
+          driving sales for them, organically, on the LehLah app — before any campaign, any brief,
+          any spend.
+        </p>
+        <ul>
+          <li><strong>What this means:</strong> the creator is already endorsing the brand for free.</li>
+          <li><strong>And:</strong> they've already driven a real, attributed sale — not just a like or a follow.</li>
+          <li><strong>What the brand gets:</strong> visibility into these creators, the ability to launch a campaign, connect directly, and track sales going forward.</li>
+          <li><strong>What the creator gets:</strong> a direct paid opportunity with a brand their own audience was already buying.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Why This Beats Searching for Creators Cold</h2>
+      <p class="tagline">Organic sales is a far stronger signal than any filter.</p>
+      <div class="wordy-block">
+        <p>
+          Every creator marketplace can filter by category, follower count or aesthetic. None of
+          that tells a brand who actually converts.
+          <span class="highlight"
+            >Organic, unprompted sales is a far stronger signal than any filter, because it isn't
+            a guess about fit — it already happened.</span
+          >
+        </p>
+        <p>
+          That's the product-market fit this feature finds: not "which creators look right for
+          this brand", but "which creators have already proven their audience buys this brand."
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Proof: HUL and Marico</h2>
+      <div class="wordy-block">
+        <p>
+          LehLah creators had organically generated lakhs of rupees in sales for brands like HUL
+          and Marico — unknowingly, on both sides. Once that surfaced through LehLah SaaS, it
+          changed the relationship:
+          <span class="highlight"
+            >both brands now run regular campaigns with LehLah, and use the discovery tool as
+            their primary way of finding creators worth paying.</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Impact</h2>
+      <div class="wordy-block">
+        <p>
+          This turned an invisible, unmonetised organic effect into a renewal engine: brands
+          didn't need to be sold on influencer marketing in the abstract — they were shown the
+          specific creators and the specific rupees already flowing, then asked if they wanted
+          more of it, faster and on purpose.
+        </p>
+      </div>
+    </div>
+
+    <div class="section" style="border-bottom: none">
+      <h2>What I Owned</h2>
+      <div class="wordy-block">
+        <p>
+          Defined the problem, connected our existing affiliate-sales data to a brand-facing
+          discovery product, and shaped how a brand goes from "here's who's already selling for
+          you" to a running campaign with that same creator.
+        </p>
+      </div>
+    </div>
+
+    <a class="up-next" href="eng-catalogue.html">
+      <div class="label">up next</div>
+      <div class="up-next-card">
+        <div class="text">
+          <h3>Order Journey Engine</h3>
+          <div class="role">Systems Design / State Machines / OMS</div>
+        </div>
+        <img src="images/creatives/eng-catalogue.png" alt="" />
+      </div>
+    </a>
+  </body>
+</html>

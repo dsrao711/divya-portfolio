@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Journey Engine — Divya Rao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #fafafa;
+        --ink: #17171a;
+        --ink-soft: #4a4a52;
+        --ink-faint: #85858f;
+        --line: #e4e1da;
+        --serif: "DM Serif Text", serif;
+        --mono: "IBM Plex Mono", monospace;
+        --sans: "IBM Plex Sans", sans-serif;
+        --amber: #3466bb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+
+      /* ---------- nav (shared with index) ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        background: color-mix(in srgb, var(--paper) 90%, transparent);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+        z-index: 20;
+      }
+      nav {
+        padding: 30px clamp(24px, 5vw, 64px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      nav .brand {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 28px;
+        text-decoration: none;
+      }
+      nav .links {
+        display: flex;
+        gap: 36px;
+        flex-wrap: wrap;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 20px;
+      }
+      nav .links a {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+      }
+      nav .links a:hover {
+        border-color: var(--amber);
+      }
+
+      /* ---------- page header ---------- */
+      .page-header {
+        padding: 64px clamp(24px, 5vw, 64px) 0;
+      }
+      .page-header .back {
+        font-family: var(--mono);
+        font-size: 13px;
+        text-decoration: none;
+        color: var(--ink-faint);
+        display: inline-block;
+        margin-bottom: 28px;
+      }
+      .page-header .back:hover {
+        color: var(--ink);
+      }
+      .title-box {
+        border: 1.5px solid var(--ink);
+        padding: 28px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .title-box h1 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: clamp(32px, 5vw, 44px);
+        margin: 0;
+      }
+      .title-box .role {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .hero-media {
+        max-width: 210px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        background: var(--line);
+      }
+      .hero-media video,
+      .hero-media img {
+        width: 100%;
+        display: block;
+      }
+      .overview-visual {
+        max-width: 260px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .overview-visual img {
+        width: 100%;
+        display: block;
+      }
+      .app-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .app-brand-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1.5px solid var(--ink);
+        flex: none;
+      }
+      .app-brand-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .app-brand-name {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 34px;
+      }
+      .wide-visual {
+        max-width: 900px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .wide-visual img {
+        width: 100%;
+        display: block;
+      }
+
+      /* ---------- info row (duration / context) ---------- */
+      .info-row {
+        padding: 28px clamp(24px, 5vw, 64px);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .info-box {
+        border: 1.5px solid var(--ink);
+        background: #747272;
+        color: #fff;
+        padding: 10px 16px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+      .info-box strong {
+        font-weight: 700;
+      }
+
+      /* ---------- tags ---------- */
+      .tags-block {
+        padding: 0 clamp(24px, 5vw, 64px) 56px;
+      }
+      .tags-block .label {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 12px;
+      }
+      .tag-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tag-box {
+        border: 1.5px solid var(--ink);
+        padding: 8px 14px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+
+      /* ---------- stat row ---------- */
+      .stats {
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      }
+      .stat {
+        padding: 32px clamp(24px, 5vw, 64px);
+        border-left: 1px solid var(--line);
+      }
+      .stat:first-child {
+        border-left: none;
+      }
+      .stat .v {
+        font-family: var(--mono);
+        font-weight: 700;
+        font-size: 30px;
+      }
+      .stat .l {
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 6px;
+      }
+
+      /* ---------- sections ---------- */
+      .section {
+        padding: 56px clamp(24px, 5vw, 64px);
+        border-bottom: 1px solid var(--line);
+      }
+      .section h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 32px;
+        margin: 0 0 20px;
+        display: inline-block;
+        border-bottom: 3px solid var(--amber);
+        padding-bottom: 4px;
+      }
+      .section .wordy {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        max-width: 95ch;
+      }
+      .section .wordy-block {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        max-width: 95ch;
+      }
+      .section .wordy-block p {
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        margin: 0 0 20px;
+      }
+      .section .wordy-block p:last-child {
+        margin-bottom: 0;
+      }
+      .section .wordy-block ol {
+        margin: 0 0 20px;
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+      .section .wordy-block ul {
+        list-style: none;
+        margin: 0 0 20px;
+        padding: 0;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .section .wordy-block li {
+        margin-bottom: 8px;
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 22px;
+        color: var(--ink);
+        margin: 0 0 18px;
+        max-width: 95ch;
+      }
+      .pull-quote {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 24px;
+        color: var(--ink);
+        margin: 22px 0;
+        padding-left: 22px;
+        border-left: 3px solid var(--ink);
+        max-width: 90ch;
+      }
+      .highlight {
+        text-decoration: underline;
+        text-decoration-color: var(--amber);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      /* ---------- up next ---------- */
+      .up-next {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 64px clamp(24px, 5vw, 64px) 80px;
+      }
+      .up-next .label {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 20px;
+      }
+      .up-next-card {
+        max-width: 1000px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        transition: transform 0.15s ease;
+      }
+      .up-next:hover .up-next-card {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+      @media (max-width: 640px) {
+        .up-next-card {
+          grid-template-columns: 1fr;
+        }
+      }
+      .up-next-card .text {
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .up-next-card .text h3 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 34px;
+        margin: 0 0 10px;
+      }
+      .up-next-card .text .role {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .up-next-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-left: 1.5px solid var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="brand" href="index.html">divya rao</a>
+        <div class="links">
+          <a href="index.html#work">work</a>
+          <a href="index.html#skills">skills</a>
+          <a href="index.html#about">about</a>
+          <a href="index.html#contact">contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <a class="back" href="index.html#work">← back to work</a>
+      <div class="title-box">
+        <h1>Designing a Configurable Order Journey Engine</h1>
+        <span class="role">Systems Design / State Machines / OMS</span>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-box"><strong>ROLE: </strong>Software Engineer, OMS Team</span>
+      <span class="info-box"><strong>SYSTEM: </strong>Central Order Management Service, Fynd Platform</span>
+      <span class="info-box"><strong>NOW POWERS: </strong>Jio Commerce Platform</span>
+      <span class="info-box"><strong>SCALE: </strong>Tira, Ajio, Swadesh, The Pant Project, Netmeds, JioMart &amp; more</span>
+    </div>
+
+    <div class="tags-block">
+      <div class="label">Focus Areas</div>
+      <div class="tag-boxes">
+        <span class="tag-box">Systems Design</span>
+        <span class="tag-box">State Machines</span>
+        <span class="tag-box">OMS</span>
+        <span class="tag-box">APIs</span>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v">Used by 6+</div>
+        <div class="l">Reliance verticals, each with a different order journey</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Context: Why the OMS Is the Hard Part</h2>
+      <div class="wordy-block">
+        <p>
+          Fynd Platform is an omni-channel commerce platform — a Shopify-class system, but with
+          faster turnaround and support, because Fynd builds and owns every integration instead of
+          leaving it to the client.
+        </p>
+        <p>
+          The Order Management System sits at the center of it. Catalogue, Inventory, Delivery
+          Partner, Payments and Finance services all feed into it, but
+          <span class="highlight"
+            >the actual business logic and state transitions live in the OMS.</span
+          >
+          Every order breaks down into shipments, shipments into bags, and every bag moves through
+          a defined state tree — placed, confirmed, invoiced, DP assigned, packed, picked,
+          delivered — with cancellation and return branches at multiple points.
+        </p>
+      </div>
+      <div class="wide-visual">
+        <img
+          src="images/diagrams/order-journey-engine.png"
+          alt="Diagram of the configurable state engine: one core order journey with per-vertical delivery-partner rules — BOPIS skips the DP step, JioMart assigns DP after pack, Fynd assigns DP before pack, and Swadesh runs made-to-order."
+        />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Problem: One State Tree, Five Different Businesses</h2>
+      <p class="tagline">That state tree wasn't actually one journey — it was several.</p>
+      <div class="wordy-block">
+        <p>
+          That state tree wasn't actually one journey — it was several, and the list kept growing
+          as Reliance brought more brands onto the platform. Each business vertical needed the same
+          underlying states to behave differently:
+        </p>
+        <ul>
+          <li><strong>Store OS / BOPIS:</strong> customer chooses pickup vs. delivery at checkout, which skips or reroutes standard delivery steps entirely.</li>
+          <li><strong>JioMart:</strong> assigns its own delivery partner only after packing, since it doesn't rely on external logistics like Shiprocket.</li>
+          <li><strong>Fynd Commerce:</strong> checks delivery-partner availability before packing, to protect small sellers from unfulfillable orders.</li>
+          <li><strong>Marketplace orders:</strong> cancellation is generally blocked post-pack, but specific marketplaces need exceptions.</li>
+          <li><strong>Swadesh:</strong> runs make-to-order, breaking the standard timeline assumption altogether.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>What I Built</h2>
+      <div class="wordy-block">
+        <p>
+          Instead of forking the state manager per vertical or layering in more conditional logic,
+          I built an API that makes
+          <span class="highlight">the state tree itself configurable — per business vertical — without changing core code.</span>
+        </p>
+        <p>
+          Any vertical can now define which actions fire on which state, whether a transition is
+          automatic or manual, and where a step like DP assignment or packing sits in the
+          sequence. Onboarding a new business model becomes a configuration exercise, not an
+          engineering sprint.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Trade-Offs I Navigated</h2>
+      <p class="tagline">Too rigid, and every vertical needs a code change. Too flexible, and nobody can debug it.</p>
+      <div class="wordy-block">
+        <p>
+          The risk on either side was real: too rigid, and every new vertical needs a code change;
+          too flexible, and you end up with an unreadable rules engine nobody can debug.
+        </p>
+        <p>
+          I anchored the configuration surface to the variance I could actually observe across
+          live verticals — sequencing, automation vs. manual triggers, and cancellation windows —
+          rather than designing for hypothetical future cases.
+          <span class="highlight"
+            >That kept the API expressive enough to solve real problems without becoming a
+            general-purpose scripting layer.</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="section" style="border-bottom: none">
+      <h2>Impact</h2>
+      <div class="wordy-block">
+        <p>
+          <span class="highlight"
+            >The configurable journey engine is a direct reason a made-to-order D2C brand like
+            Swadesh and a hyperlocal grocery operation like JioMart can run on the same core OMS
+            today</span
+          >
+          — each with a completely different order journey, none of it hardcoded.
+        </p>
+      </div>
+      <div class="tag-boxes">
+        <span class="tag-box">Tira</span>
+        <span class="tag-box">Ajio</span>
+        <span class="tag-box">Netmeds</span>
+        <span class="tag-box">JioMart</span>
+        <span class="tag-box">Swadesh</span>
+        <span class="tag-box">The Pant Project</span>
+      </div>
+    </div>
+
+    <a class="up-next" href="eng-oms-regression.html">
+      <div class="label">up next</div>
+      <div class="up-next-card">
+        <div class="text">
+          <h3>Regression Testing</h3>
+          <div class="role">Test Automation / CI-CD / Quality Engineering</div>
+        </div>
+        <img src="images/creatives/eng-oms-regression.png" alt="" />
+      </div>
+    </a>
+  </body>
+</html>

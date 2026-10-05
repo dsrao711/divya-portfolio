@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paid Collab — Divya Rao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #fafafa;
+        --ink: #17171a;
+        --ink-soft: #4a4a52;
+        --ink-faint: #85858f;
+        --line: #e4e1da;
+        --serif: "DM Serif Text", serif;
+        --mono: "IBM Plex Mono", monospace;
+        --sans: "IBM Plex Sans", sans-serif;
+        --amber: #2e6b4f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      img,
+      video {
+        max-width: 100%;
+      }
+
+      /* ---------- nav (shared with index) ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        background: color-mix(in srgb, var(--paper) 90%, transparent);
+        backdrop-filter: blur(6px);
+        border-bottom: 1px solid var(--line);
+        z-index: 20;
+      }
+      nav {
+        padding: 30px clamp(24px, 5vw, 64px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      nav .brand {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 28px;
+        text-decoration: none;
+      }
+      nav .links {
+        display: flex;
+        gap: 36px;
+        flex-wrap: wrap;
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 20px;
+      }
+      nav .links a {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+      }
+      nav .links a:hover {
+        border-color: var(--amber);
+      }
+
+      /* ---------- page header ---------- */
+      .page-header {
+        padding: 64px clamp(24px, 5vw, 64px) 0;
+      }
+      .page-header .back {
+        font-family: var(--mono);
+        font-size: 13px;
+        text-decoration: none;
+        color: var(--ink-faint);
+        display: inline-block;
+        margin-bottom: 28px;
+      }
+      .page-header .back:hover {
+        color: var(--ink);
+      }
+      .title-box {
+        border: 1.5px solid var(--ink);
+        padding: 28px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .title-box h1 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: clamp(32px, 5vw, 44px);
+        margin: 0;
+      }
+      .title-box .role {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .hero-media {
+        max-width: 210px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        background: var(--line);
+      }
+      .hero-media video,
+      .hero-media img {
+        width: 100%;
+        display: block;
+      }
+      .overview-visual {
+        max-width: 260px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .overview-visual img {
+        width: 100%;
+        display: block;
+      }
+      .app-brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .app-brand-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1.5px solid var(--ink);
+        flex: none;
+      }
+      .app-brand-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .app-brand-name {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 34px;
+      }
+      .wide-visual {
+        max-width: 900px;
+        margin: 32px 0 0 22px;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+      }
+      .wide-visual img {
+        width: 100%;
+        display: block;
+      }
+
+      /* ---------- info row (duration / context) ---------- */
+      .info-row {
+        padding: 28px clamp(24px, 5vw, 64px);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .info-box {
+        border: 1.5px solid var(--ink);
+        background: #747272;
+        color: #fff;
+        padding: 10px 16px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+      .info-box strong {
+        font-weight: 700;
+      }
+
+      /* ---------- tags ---------- */
+      .tags-block {
+        padding: 0 clamp(24px, 5vw, 64px) 56px;
+      }
+      .tags-block .label {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 12px;
+      }
+      .tag-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tag-box {
+        border: 1.5px solid var(--ink);
+        padding: 8px 14px;
+        font-family: var(--mono);
+        font-size: 13.5px;
+      }
+
+      /* ---------- stat row ---------- */
+      .stats {
+        border-top: 2px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      }
+      .stat {
+        padding: 32px clamp(24px, 5vw, 64px);
+        border-left: 1px solid var(--line);
+      }
+      .stat:first-child {
+        border-left: none;
+      }
+      .stat .v {
+        font-family: var(--mono);
+        font-weight: 700;
+        font-size: 30px;
+      }
+      .stat .l {
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 6px;
+      }
+
+      /* ---------- sections ---------- */
+      .section {
+        padding: 56px clamp(24px, 5vw, 64px);
+        border-bottom: 1px solid var(--line);
+      }
+      .section h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: 32px;
+        margin: 0 0 20px;
+        display: inline-block;
+        border-bottom: 3px solid var(--amber);
+        padding-bottom: 4px;
+      }
+      .section .wordy {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        max-width: 95ch;
+      }
+      .section .wordy-block {
+        border-left: 3px solid var(--amber);
+        padding-left: 22px;
+        max-width: 95ch;
+      }
+      .section .wordy-block p {
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        margin: 0 0 20px;
+      }
+      .section .wordy-block p:last-child {
+        margin-bottom: 0;
+      }
+      .section .wordy-block ol {
+        margin: 0 0 20px;
+        padding-left: 22px;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+      .section .wordy-block ul {
+        list-style: none;
+        margin: 0 0 20px;
+        padding: 0;
+        font-family: var(--mono);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--ink-soft);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .section .wordy-block li {
+        margin-bottom: 8px;
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 22px;
+        color: var(--ink);
+        margin: 0 0 18px;
+        max-width: 95ch;
+      }
+      .pull-quote {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 24px;
+        color: var(--ink);
+        margin: 22px 0;
+        padding-left: 22px;
+        border-left: 3px solid var(--ink);
+        max-width: 90ch;
+      }
+      .highlight {
+        text-decoration: underline;
+        text-decoration-color: var(--amber);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 3px;
+      }
+
+      /* ---------- up next ---------- */
+      .up-next {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 64px clamp(24px, 5vw, 64px) 80px;
+      }
+      .up-next .label {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        margin-bottom: 20px;
+      }
+      .up-next-card {
+        max-width: 1000px;
+        margin: 0 auto;
+        border: 1.5px solid var(--ink);
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        transition: transform 0.15s ease;
+      }
+      .up-next:hover .up-next-card {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+      @media (max-width: 640px) {
+        .up-next-card {
+          grid-template-columns: 1fr;
+        }
+      }
+      .up-next-card .text {
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .up-next-card .text h3 {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 34px;
+        margin: 0 0 10px;
+      }
+      .up-next-card .text .role {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .up-next-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-left: 1.5px solid var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="brand" href="index.html">divya rao</a>
+        <div class="links">
+          <a href="index.html#work">work</a>
+          <a href="index.html#skills">skills</a>
+          <a href="index.html#about">about</a>
+          <a href="index.html#contact">contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <a class="back" href="index.html#work">← back to work</a>
+      <div class="title-box">
+        <h1>Turning Brand Campaigns into a Creator Acquisition Engine</h1>
+        <span class="role">Growth / Product Strategy / Creator Marketplace</span>
+      </div>
+    </div>
+
+    <div class="info-row">
+      <span class="info-box"><strong>ROLE: </strong>Product Head</span>
+      <span class="info-box"><strong>PRODUCT: </strong>LehLah Creator App + LehLah SaaS</span>
+      <span class="info-box"><strong>PLATFORM: </strong>iOS, Android &amp; Web</span>
+      <span class="info-box"><strong>FOCUS: </strong>Creator Acquisition, Influencer Marketing &amp; Growth</span>
+    </div>
+
+    <div class="section">
+      <h2>Overview</h2>
+      <div class="app-brand">
+        <div class="app-brand-icon">
+          <img src="images/lehlah-logo.avif" alt="LehLah logo" />
+        </div>
+        <span class="app-brand-name">LehLah</span>
+      </div>
+      <div class="wordy-block">
+        <p>
+          LehLah is a creator-commerce platform that helps creators monetize their content through
+          affiliate marketing and paid brand collaborations. Creators can generate affiliate links for
+          leading marketplaces including
+          <span class="highlight">Amazon, Flipkart, Myntra, AJIO, Nykaa and Tira</span>, and earn a
+          commission whenever their audience shops through those links.
+        </p>
+        <p>
+          In 2025, LehLah expanded into influencer marketing. Our affiliate infrastructure gave us an
+          important advantage: instead of reporting only views, reach and engagement, we could also
+          <span class="highlight">attribute sales generated through creator campaigns</span>.
+        </p>
+        <p>
+          As more brands began running influencer campaigns through LehLah, we ran into a new problem.
+          <span class="highlight">We had creators. We didn't always have the right creators.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Problem</h2>
+      <p class="tagline">A large creator base didn't necessarily mean a campaign-ready creator base.</p>
+      <div class="wordy-block">
+        <p>
+          LehLah had originally been built for affiliate creators. Our most active creators could
+          drive meaningful GMV, but influencer campaigns required a very different kind of supply. A
+          brand might ask for "female lifestyle creators in Mumbai with 10K+ followers who speak
+          English and create storytelling-led content." Follower count alone couldn't solve that
+          brief. Brands cared about factors such as content quality, niche, location, language,
+          aesthetic, storytelling ability and brand fit. So every time a campaign came in, our team
+          could not rely entirely on creators already available in the app — campaign teams still had
+          to manually discover and reach out to suitable creators.
+        </p>
+      </div>
+      <p class="tagline" style="margin-top: 32px">We needed to acquire the right creators.</p>
+      <div class="wordy-block">
+        <p>
+          We were already spending approximately ₹5L/month on marketing. But increasing ad spend
+          wasn't solving the problem — the issue wasn't simply acquiring more users. It cost us
+          roughly ₹300 to acquire a quality creator who could actually be useful for influencer
+          marketing campaigns, and even then, an ad asking a creator to "Download LehLah" had limited
+          urgency. <span class="highlight">There was no immediate reason for them to act.</span>
+        </p>
+      </div>
+      <div class="wide-visual">
+        <img
+          src="images/creator-comparison.png"
+          alt="Comparison of the kind of creators LehLah had (large, affiliate-heavy, driving meaningful GMV) versus the kind of creators needed (right aesthetic, storytelling vibe and sales-generating potential for brand campaigns)"
+        />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Insight</h2>
+      <p class="tagline">
+        What if we stopped acquiring creators first and finding opportunities for them later?
+      </p>
+      <div class="wordy-block">
+        <p>
+          We already had something much more valuable than an advertisement: a real brand
+          collaboration. Creators weren't particularly interested in downloading another creator app,
+          but they were interested in working with brands they knew. That flipped the acquisition
+          problem for us.
+        </p>
+      </div>
+      <p class="pull-quote">
+        Instead of <em class="highlight">ad → download LehLah → wait for opportunity</em>, we could
+        create <em class="highlight">relevant brand opportunity → download LehLah → apply</em>. The
+        campaign itself could
+        become our acquisition channel.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>The Opportunity</h2>
+      <p class="tagline">We already had the creators. They just weren't on LehLah yet.</p>
+      <div class="wordy-block">
+        <p>
+          Alongside the creator app, we had built LehLah Discovery, our creator discovery product for
+          brands and internal campaign teams. Discovery contained a much broader database of creators
+          across niches and categories — sourced from publicly available creator information and
+          evaluated using our internal AI-assisted vetting system. This meant we had two creator
+          pools: the LehLah App, where creators had already signed up, and LehLah Discovery, relevant,
+          vetted creators who may not have joined LehLah yet. Paid Collab was originally searching
+          only the first pool. That was the unlock —
+          <span class="highlight">what if every new campaign searched both?</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Solution</h2>
+      <p class="tagline">Turn every Paid Collab into a targeted acquisition campaign.</p>
+      <div class="wordy-block">
+        <p>
+          When our team creates a Paid Collab, they already define the creators the brand is looking
+          for — gender, location, follower count, category. Previously, those filters were applied
+          only to creators registered on LehLah. We extended the same matching logic to our Discovery
+          creator database. Now, whenever a campaign is created:
+        </p>
+        <ol>
+          <li>The criteria filters existing LehLah creators.</li>
+          <li>The same criteria filters relevant creators in Discovery.</li>
+          <li>Existing creators receive the opportunity through LehLah.</li>
+          <li>
+            Matching non-LehLah creators with an available contact email receive a personalised
+            collaboration invite.
+          </li>
+          <li>Interested creators download LehLah to view and apply for the opportunity.</li>
+        </ol>
+        <p><span class="highlight">No separate acquisition campaign was required.</span></p>
+      </div>
+      <div class="wide-visual">
+        <img
+          src="images/campaign-flow.png"
+          alt="Three-step campaign creator invitation flow: brand sets campaign criteria, matching creators receive a personalised invite, creators view and apply on the LehLah app"
+        />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Experience</h2>
+      <p class="tagline">The message wasn't "Download LehLah to get opportunities."</p>
+      <p class="pull-quote">"LehLah wants to offer you a paid collaboration with Flipkart"</p>
+      <div class="wordy-block">
+        <p>
+          And when applicable, the creator could immediately see the brand associated with the
+          opportunity. That distinction mattered. Instead of asking creators to download an
+          unfamiliar platform and promising that opportunities might appear later, we showed them
+          something valuable before asking them to sign up. The creator journey became: receive
+          invite → see brand opportunity → download LehLah → sign up → view collaboration → apply.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The First Test</h2>
+      <p class="tagline">Flipkart Minutes gave us the signal we needed.</p>
+      <div class="wordy-block">
+        <p>
+          We tested the flow on a collaboration opportunity for Flipkart Minutes. Instead of relying
+          only on the existing LehLah creator base, matching creators from Discovery also received
+          the collaboration invitation. The response was dramatically stronger than our traditional
+          creator acquisition efforts:
+          <span class="highlight">1000+ creator downloads from a single campaign, and a ~70%
+          email open rate</span>. And importantly, these weren't random installs — they were creators who
+          had already matched the campaign criteria and passed through our Discovery vetting process.
+        </p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v">1000+</div>
+        <div class="l">Quality creator downloads from a single campaign</div>
+      </div>
+      <div class="stat">
+        <div class="v">~70%</div>
+        <div class="l">Email open rate</div>
+      </div>
+      <div class="stat">
+        <div class="v">~₹0</div>
+        <div class="l">Incremental paid acquisition spend*</div>
+      </div>
+    </div>
+    <p style="margin: 12px 0 0; padding: 0 clamp(24px, 5vw, 64px); font-size: 12.5px; color: var(--ink-faint)">
+      *Excluding existing product/infrastructure costs.
+    </p>
+    <div class="wide-visual" style="margin: 32px auto 0">
+      <img
+        src="images/flipkart-minutes-dashboard.png"
+        alt="LehLah Flipkart Minutes campaign dashboard showing 1046 interested creators out of 1093 total, with followers, engagement rate and median views per creator"
+      />
+    </div>
+    <p style="max-width: 900px; margin: 12px auto 0; padding: 0 clamp(24px, 5vw, 64px); font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); text-align: center">
+      Actual screenshot of SaaS tool for Flipkart Minutes
+    </p>
+
+    <div class="section" style="margin-top: 56px">
+      <h2>Why It Worked</h2>
+      <p class="tagline">We changed the value exchange.</p>
+      <div class="wordy-block">
+        <p>
+          Traditional acquisition asked the creator to take an action first — download our app and
+          you may find opportunities. This flow gave them the value first — here's an opportunity
+          relevant to you, join LehLah if you want it. That created three advantages.
+        </p>
+        <ul>
+          <li>
+            <strong>Relevance over reach:</strong> campaign filters determined who received the
+            invitation, so we weren't paying to acquire thousands of users and discovering their
+            quality afterward.
+          </li>
+          <li>
+            <strong>Intent at the moment of acquisition:</strong> creators joined because there was
+            something they already wanted to do inside the product.
+          </li>
+          <li>
+            <strong>Brand demand became distribution:</strong> every new campaign could now help
+            LehLah acquire the exact type of creators brands were requesting.
+          </li>
+        </ul>
+        <p>
+          <span class="highlight">The marketplace started helping grow its own supply.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>The Flywheel</h2>
+      <p class="tagline">
+        More campaigns helped us build a better creator network. A better creator network helped us
+        win and execute more campaigns.
+      </p>
+      <div class="wordy-block">
+        <p>
+          <strong>Brands bring campaigns</strong> → <strong>campaign briefs identify the creators we
+          need</strong> → <strong>Discovery finds relevant creators</strong> →
+          <strong>creators receive valuable opportunities</strong> → <strong>high-intent creators
+          join LehLah</strong> → <strong>LehLah's campaign-ready creator pool improves</strong> →
+          <strong>future campaigns become easier to fulfil</strong>.
+          <span class="highlight">And the loop repeats.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Impact</h2>
+      <div class="wordy-block">
+        <p>
+          The feature started as a relatively small extension to our Paid Collab matching logic. But
+          it changed how we thought about creator acquisition. Instead of spending more money trying
+          to build a generic creator audience, we could use real-time brand demand to determine which
+          creators we should acquire. Over time, this helped diversify LehLah's creator network
+          across formats and creator types, including UGC creators, storytellers, aesthetic creators,
+          affiliate creators and lifestyle creators.
+          <span class="highlight"
+            >Most importantly, this growth did not require us to proportionally increase paid
+            marketing spend.</span
+          >
+        </p>
+      </div>
+      <p class="pull-quote" style="margin-top: 28px">
+        We weren't just acquiring more creators — we were acquiring creators because brands already
+        needed them.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>What I'd Improve</h2>
+      <p class="tagline">Turn campaign-led acquisition into a continuously expanding creator graph.</p>
+      <div class="wordy-block">
+        <p>
+          The next opportunity would be to increase the breadth and freshness of our Discovery
+          database. Rather than relying only on existing creator records, I'd explore signals that
+          continuously identify creators with proven brand-collaboration experience. For example, we
+          could maintain a list of high-priority D2C and consumer brands and identify creators who
+          publicly collaborate with them. If a creator works with one of those brands, that becomes a
+          useful signal for Discovery: <strong>creator collaborates with relevant brand</strong> →
+          <strong>creator enters discovery pipeline</strong> → <strong>profile is evaluated</strong> →
+          <strong>creator becomes eligible for future matching</strong>. Over time, this could build a
+          richer creator graph based not only on follower count or category, but on
+          <span class="highlight">actual collaboration behaviour and brand relevance.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="section" style="border-bottom: none">
+      <h2>Takeaway</h2>
+      <div class="wordy-block">
+        <p>This project reinforced a simple product lesson for me.</p>
+      </div>
+      <p class="pull-quote" style="margin-top: 20px">
+        Acquisition works differently when the reason to join the product is already waiting on the
+        other side.
+      </p>
+      <div class="wordy-block" style="margin-top: 20px">
+        <p>
+          We didn't need to convince creators that LehLah might eventually be valuable. We used the
+          value we already had — real brand demand — to give them a reason to join today.
+        </p>
+      </div>
+    </div>
+
+    <a class="up-next" href="index.html#work">
+      <div class="label">up next</div>
+      <div class="up-next-card">
+        <div class="text">
+          <h3>Campaign Report</h3>
+          <div class="role">Product / Attribution + Analytics</div>
+        </div>
+        <img src="images/creatives/campaign-report.png" alt="" />
+      </div>
+    </a>
+  </body>
+</html>

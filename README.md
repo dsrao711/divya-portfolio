@@ -1,26 +1,23 @@
 # Divya Rao — Portfolio
 
-Personal portfolio site: product case studies, engineering work, writing, and a product lab.
+Personal portfolio site: product and engineering case studies, restyled in the spirit of
+gracesportfolio.com — original HTML/CSS throughout, no build step, no framework.
 
-## Design
+## Structure
 
-Built from a design produced in [claude.ai/design](https://claude.ai/design) using the "Sawdust" design system (warm analog-cinema aesthetic — cream paper, burnt-amber accent, Instrument Serif + Hanken Grotesk + Space Mono).
+- `index.html` — home page (hero, work, skills, about, contact)
+- `paid-collab.html`, `campaign-report.html`, `brand-pmf.html`, `eng-catalogue.html`,
+  `eng-oms-regression.html` — full case study detail pages, chained to each other via an
+  "up next" card
+- `images/`, `videos/` — case study creatives, product screenshots, diagrams and demo clips
 
-## Stack
-
-Static site, no build step:
-
-- `index.html` — page markup + client-side routing/data, using a small custom-element templating runtime (`<x-dc>`, `sc-if`, `sc-for`)
-- `support.js` — the templating runtime (loads React/ReactDOM/Babel from CDN and renders the page)
-- `_ds/` — design system CSS (colors, type, component primitives)
-
-## Run locally
+## Local preview
 
 ```bash
-python3 -m http.server 8080
-# open http://localhost:8080
+python3 -m http.server 8000
+# open http://localhost:8000
 ```
 
 ## Deploy
 
-Deployed as a static site via GitHub Pages from the `main` branch.
+Static site, deployed via GitHub Pages from the `main` branch root.
