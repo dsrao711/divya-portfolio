@@ -392,6 +392,17 @@
       .polaroid-placeholder .glyph {
         font-size: 26px;
       }
+      .polaroid-photo {
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        margin: 10px 10px 40px;
+      }
+      .polaroid-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
       .about-copy {
         flex: 1 1 260px;
         max-width: 360px;
@@ -636,7 +647,9 @@
         </div>
         <div class="about-row">
           <div class="polaroid">
-            <div class="polaroid-placeholder"><span class="glyph">📷</span><span>photo soon</span></div>
+            <div class="polaroid-photo">
+              <img src="images/about/bali-cliff.jpg" alt="Divya at a cliffside sunset in Nusa Penida, Bali" />
+            </div>
           </div>
           <div class="polaroid">
             <img src="images/about/rome-colosseum.jpg" alt="Divya at the Colosseum in Rome" />
@@ -645,7 +658,9 @@
             <img src="images/about/jaipur-archway.jpg" alt="Divya at a painted archway in Jaipur" />
           </div>
           <div class="polaroid">
-            <div class="polaroid-placeholder"><span class="glyph">📷</span><span>photo soon</span></div>
+            <div class="polaroid-photo">
+              <img src="images/about/venice-gondola.jpg" alt="Divya on a gondola ride in Venice" />
+            </div>
           </div>
           <div class="about-copy">
             <p>
