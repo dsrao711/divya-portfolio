@@ -331,40 +331,80 @@
       }
 
       /* ---------- about ---------- */
-      .about-wrap {
-        max-width: 1100px;
-        display: grid;
-        grid-template-columns: 1.3fr 1fr;
-        gap: 56px;
+      .about-row {
+        max-width: 1240px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 36px 22px;
       }
-      @media (max-width: 680px) {
-        .about-wrap {
-          grid-template-columns: 1fr;
-        }
+      .about-row + .about-row {
+        margin-top: 48px;
       }
-      .about-wrap p {
+      .polaroid {
+        width: 172px;
+        flex: none;
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 20px rgba(23, 23, 26, 0.14);
+        transition: transform 0.2s ease;
+      }
+      .polaroid:nth-child(1) {
+        transform: rotate(-4deg);
+      }
+      .polaroid:nth-child(2) {
+        transform: rotate(2deg);
+      }
+      .polaroid:nth-child(3) {
+        transform: rotate(-2deg);
+      }
+      .polaroid:nth-child(4) {
+        transform: rotate(3deg);
+      }
+      .polaroid:nth-child(6) {
+        transform: rotate(-3deg);
+      }
+      .polaroid:hover {
+        transform: rotate(0deg) translateY(-4px);
+        z-index: 2;
+      }
+      .polaroid img {
+        width: 100%;
+        display: block;
+      }
+      .polaroid-placeholder {
+        aspect-ratio: 3 / 4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--line);
+        margin: 10px 10px 40px;
         font-family: var(--mono);
-        font-size: 15.5px;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+        text-align: center;
+      }
+      .polaroid-placeholder .glyph {
+        font-size: 26px;
+      }
+      .about-copy {
+        flex: 1 1 260px;
+        max-width: 360px;
+      }
+      .about-copy p {
+        font-family: var(--mono);
+        font-size: 15px;
         line-height: 1.75;
         color: var(--ink-soft);
         margin: 0 0 16px;
       }
-      .about-wrap p:first-child {
-        color: var(--ink);
-        font-size: 19px;
-        font-family: var(--serif);
-      }
-      .swatches {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-content: flex-start;
-      }
-      .swatch {
-        width: 58px;
-        height: 58px;
-        border-radius: 12px;
-        border: 1.5px solid var(--ink);
+      .about-copy p:last-child {
+        margin-bottom: 0;
       }
 
       /* ---------- contact / footer ---------- */
@@ -594,40 +634,47 @@
           <h2>about</h2>
           <span class="cats">a little more about me</span>
         </div>
-        <div class="about-wrap">
-          <div>
+        <div class="about-row">
+          <div class="polaroid">
+            <div class="polaroid-placeholder"><span class="glyph">📷</span><span>photo soon</span></div>
+          </div>
+          <div class="polaroid">
+            <img src="images/about/rome-colosseum.jpg" alt="Divya at the Colosseum in Rome" />
+          </div>
+          <div class="polaroid">
+            <img src="images/about/jaipur-archway.jpg" alt="Divya at a painted archway in Jaipur" />
+          </div>
+          <div class="polaroid">
+            <div class="polaroid-placeholder"><span class="glyph">📷</span><span>photo soon</span></div>
+          </div>
+          <div class="about-copy">
             <p>
-              I started my career in software engineering because I wanted to understand how
-              technology gets built.
+              Born and brought up in Mumbai, I'm a traveller at heart. I love exploring new
+              cities, experiencing different cultures, trying local food, and taking way too many
+              pictures along the way.
             </p>
             <p>
-              Over time, I became increasingly interested in the decisions that happened before the
-              code: what problem to solve, why it mattered, which trade-offs to make and whether the
-              product actually worked.
-            </p>
-            <p>That led me into Product Management.</p>
-            <p>
-              Today, I work across product strategy, execution, growth, monetisation and increasingly
-              business problems. My engineering background continues to influence how I think about
-              feasibility, systems and technical trade-offs.
+              I have a soft spot for the smell of new books, black coffee, and FRIENDS reruns.
+              Personality-wise, I'm Monica at work, Rachel when it comes to fashion, and a little
+              Phoebe everywhere else.
             </p>
           </div>
-          <div>
-            <div class="overline" style="margin-bottom: 14px">scope of ownership</div>
-            <div class="swatches">
-              <div class="swatch" style="background: var(--c1)" title="Code"></div>
-              <div class="swatch" style="background: var(--c2)" title="Product"></div>
-              <div class="swatch" style="background: var(--c3)" title="Growth"></div>
-              <div class="swatch" style="background: var(--c4)" title="Business"></div>
-              <div class="swatch" style="background: var(--c5)" title="Leadership"></div>
-            </div>
-            <ol style="list-style: none; margin: 16px 0 0; padding: 0; font-family: var(--mono); font-size: 14px; line-height: 1.7; color: var(--ink-soft)">
-              <li>Code — how do we build it?</li>
-              <li>Product — what should we build?</li>
-              <li>Growth — how do we get people to use it?</li>
-              <li>Business — how does it make money?</li>
-              <li>Leadership — where should the product go next?</li>
-            </ol>
+          <div class="polaroid">
+            <img src="images/about/golden-hour-sea.jpg" alt="Divya at golden hour by the sea" />
+          </div>
+        </div>
+
+        <div class="about-row">
+          <div class="about-copy" style="max-width: 640px">
+            <p>
+              You'll usually find me planning my next trip, experimenting with a recipe I found on
+              Instagram, watching podcasts, keeping up with Paris Fashion Week, or picking up a new
+              book.
+            </p>
+            <p>
+              My bookshelf is a mix of everything, but Tuesdays with Morrie and The Love Hypothesis
+              are two favourites. ✈️📚☕
+            </p>
           </div>
         </div>
       </section>
