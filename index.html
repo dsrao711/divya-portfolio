@@ -332,18 +332,18 @@
 
       /* ---------- about ---------- */
       .about-row {
-        max-width: 1240px;
+        max-width: 1340px;
         margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-end;
-        gap: 36px 22px;
+        gap: 40px 26px;
       }
       .about-row + .about-row {
         margin-top: 48px;
       }
       .polaroid {
-        width: 172px;
+        width: 205px;
         flex: none;
         background: #fff;
         border: 1px solid var(--line);
@@ -372,25 +372,6 @@
       .polaroid img {
         width: 100%;
         display: block;
-      }
-      .polaroid-placeholder {
-        aspect-ratio: 3 / 4;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        background: var(--line);
-        margin: 10px 10px 40px;
-        font-family: var(--mono);
-        font-size: 11px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--ink-faint);
-        text-align: center;
-      }
-      .polaroid-placeholder .glyph {
-        font-size: 26px;
       }
       .polaroid-photo {
         aspect-ratio: 3 / 4;
@@ -652,10 +633,14 @@
             </div>
           </div>
           <div class="polaroid">
-            <img src="images/about/rome-colosseum.jpg" alt="Divya at the Colosseum in Rome" />
+            <div class="polaroid-photo">
+              <img src="images/about/rome-colosseum.jpg" alt="Divya at the Colosseum in Rome" />
+            </div>
           </div>
           <div class="polaroid">
-            <img src="images/about/jaipur-archway.jpg" alt="Divya at a painted archway in Jaipur" />
+            <div class="polaroid-photo">
+              <img src="images/about/tuscany-alley.jpg" alt="Divya walking an alley in a Tuscan hill town" />
+            </div>
           </div>
           <div class="polaroid">
             <div class="polaroid-photo">
@@ -668,27 +653,25 @@
               cities, experiencing different cultures, trying local food, and taking way too many
               pictures along the way.
             </p>
-            <p>
-              I have a soft spot for the smell of new books, black coffee, and FRIENDS reruns.
-              Personality-wise, I'm Monica at work, Rachel when it comes to fashion, and a little
-              Phoebe everywhere else.
-            </p>
           </div>
           <div class="polaroid">
-            <img src="images/about/golden-hour-sea.jpg" alt="Divya at golden hour by the sea" />
+            <div class="polaroid-photo" style="aspect-ratio: 900 / 617">
+              <img src="images/about/golden-hour-sea.jpg" alt="Divya at golden hour by the sea" />
+            </div>
           </div>
         </div>
 
         <div class="about-row">
           <div class="about-copy" style="max-width: 640px">
             <p>
+              I have a soft spot for the smell of new books, black coffee, and FRIENDS reruns.
+              Personality-wise, I'm Monica at work, Rachel when it comes to fashion, and a little
+              Phoebe everywhere else.
+            </p>
+            <p>
               You'll usually find me planning my next trip, experimenting with a recipe I found on
               Instagram, watching podcasts, keeping up with Paris Fashion Week, or picking up a new
               book.
-            </p>
-            <p>
-              My bookshelf is a mix of everything, but Tuesdays with Morrie and The Love Hypothesis
-              are two favourites. ✈️📚☕
             </p>
           </div>
         </div>
