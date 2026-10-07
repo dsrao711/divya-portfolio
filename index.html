@@ -417,9 +417,30 @@
         color: var(--ink-faint);
         display: flex;
         align-items: center;
-        justify-content: space-between;
         flex-wrap: wrap;
         gap: 16px;
+      }
+      .footer-spacer {
+        flex: 1 1 0;
+      }
+      .footer-copyright {
+        flex: 1 1 0;
+        text-align: right;
+        white-space: nowrap;
+      }
+      @media (max-width: 680px) {
+        footer {
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+        }
+        .footer-spacer {
+          display: none;
+        }
+        .footer-copyright {
+          text-align: center;
+          white-space: normal;
+        }
       }
       .footer-badges {
         display: flex;
@@ -653,11 +674,11 @@
 
     <div class="wrap">
       <footer id="contact">
-        <span>© 2026 Divya Rao</span>
+        <span class="footer-spacer"></span>
         <span class="footer-badges">
           <span class="footer-label">contact:</span>
           <span class="shadow-badge"><a href="mailto:divyarao0712@gmail.com">divyarao0712@gmail.com</a></span>
-          <span class="shadow-badge"><a href="tel:+919987907159">call</a></span>
+          <span class="shadow-badge"><a href="tel:+919987907159">+91 9987907159</a></span>
           <span class="shadow-badge"
             ><a
               href="https://docs.google.com/document/d/1dIUvghjwl3_uQzCLZRgr0ND8jpx2DRUcdcPipu2itkU/edit?usp=sharing"
@@ -669,6 +690,7 @@
           <span class="shadow-badge"><a href="#linkedin">linkedin</a></span>
           <span class="shadow-badge"><a href="#github">github</a></span>
         </span>
+        <span class="footer-copyright">© 2026 Divya Rao</span>
       </footer>
     </div>
   </body>
