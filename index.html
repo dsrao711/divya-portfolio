@@ -339,9 +339,6 @@
         align-items: flex-end;
         gap: 40px 26px;
       }
-      .about-row + .about-row {
-        margin-top: 48px;
-      }
       .polaroid {
         width: 205px;
         flex: none;
@@ -358,9 +355,6 @@
       }
       .polaroid:nth-child(3) {
         transform: rotate(-2deg);
-      }
-      .polaroid:nth-child(4) {
-        transform: rotate(3deg);
       }
       .polaroid:hover {
         transform: rotate(0deg) translateY(-4px);
@@ -382,8 +376,8 @@
         display: block;
       }
       .about-copy {
-        flex: 1 1 260px;
-        max-width: 360px;
+        flex: 1 1 320px;
+        max-width: 560px;
       }
       .about-copy p {
         font-family: var(--mono);
@@ -639,22 +633,12 @@
               <img src="images/about/tuscany-alley.jpg" alt="Divya walking an alley in a Tuscan hill town" />
             </div>
           </div>
-          <div class="polaroid">
-            <div class="polaroid-photo">
-              <img src="images/about/venice-gondola.jpg" alt="Divya on a gondola ride in Venice" />
-            </div>
-          </div>
           <div class="about-copy" style="align-self: flex-start; margin-top: 16px">
             <p>
               Born and brought up in Mumbai, I'm a traveller at heart. I love exploring new
               cities, experiencing different cultures, trying local food, and taking way too many
               pictures along the way.
             </p>
-          </div>
-        </div>
-
-        <div class="about-row">
-          <div class="about-copy" style="max-width: 640px">
             <p>I have a soft spot for the smell of new books, black coffee, and FRIENDS reruns.</p>
             <p>
               You'll usually find me planning my next trip, experimenting with a recipe I found on
