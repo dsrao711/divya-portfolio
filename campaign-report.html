@@ -309,6 +309,21 @@
       .section .wordy-block li {
         margin-bottom: 8px;
       }
+      .own-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 28px;
+      }
+      .own-flow .arrow {
+        font-family: var(--mono);
+        color: var(--ink-faint);
+      }
+      .own-flow .tag-box.filled {
+        background: var(--ink);
+        color: #fff;
+      }
       .tagline {
         font-family: var(--serif);
         font-weight: 700;
@@ -415,7 +430,7 @@
     </div>
 
     <div class="info-row">
-      <span class="info-box"><strong>ROLE: </strong>PM — Problem Framing to Launch</span>
+      <span class="info-box"><strong>ROLE: </strong>PM — Owned End to End, Ideation to GTM</span>
       <span class="info-box"><strong>BUYER: </strong>Brands Running Influencer Marketing Campaigns</span>
       <span class="info-box"><strong>SURFACE: </strong>Brand Dashboard · Campaign Report</span>
       <span class="info-box"><strong>STATUS: </strong>Live, Iterating</span>
@@ -603,11 +618,26 @@
 
     <div class="section" style="border-bottom: none">
       <h2>What I Owned</h2>
+      <p class="tagline">I owned this feature end to end, from ideation to GTM.</p>
+      <div class="own-flow">
+        <span class="tag-box">Ideation</span><span class="arrow">&rarr;</span>
+        <span class="tag-box">Discovery</span><span class="arrow">&rarr;</span>
+        <span class="tag-box">Attribution Model &amp; PRD</span><span class="arrow">&rarr;</span>
+        <span class="tag-box">Design</span><span class="arrow">&rarr;</span>
+        <span class="tag-box">Build with Eng</span><span class="arrow">&rarr;</span>
+        <span class="tag-box filled">Launch &amp; GTM</span>
+      </div>
       <div class="wordy-block">
         <p>
-          Defined the attribution model across LehLah and affiliate creators, designed the
-          full-funnel report structure end-to-end, and worked with Engineering to wire up
-          retailer- and D2C-level tracking.
+          Spotted the gap, defined the attribution model across LehLah and affiliate creators,
+          designed the full-funnel report structure, worked with Engineering to wire up
+          retailer- and D2C-level tracking, and took it to market with brands.
+        </p>
+        <p>
+          <span class="highlight"
+            >The Campaign Report is one part of the LehLah SaaS platform, which I own end to end
+            as a product: built 0&rarr;1 to 16+ paying clients.</span
+          >
         </p>
       </div>
     </div>
